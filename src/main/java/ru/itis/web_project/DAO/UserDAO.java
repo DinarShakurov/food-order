@@ -51,6 +51,24 @@ public class UserDAO {
         return Optional.ofNullable(list);
     }
 
+    public static Optional<User> findUserByLoginAndPassword(String login, String password) {
+        String sqlQuery = "SELECT * FROM user WHERE  login = ? & password = ?";
+        User user = null ;
+        try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
+            ps.setString(1, login);
+            ps.setString(2, password);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    user = rowMapper.mapRow(rs);
+                }
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.ofNullable(user);
+    }
+
     public static Optional<List<User>> getAllUsers() {
         ArrayList<User> list = null;
         String sqlQuery = "SELECT * FROM user GROUP BY role_id";

@@ -1,5 +1,7 @@
 package ru.itis.web_project.servlets;
 
+import ru.itis.web_project.utils.Authorization;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +18,10 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        if (!Authorization.isItCorrect(req, resp)) {
+            req.getRequestDispatcher("/jsp/login.jsp").forward(req, resp);
+        } else {
+            resp.sendRedirect("/main");
+        }
     }
 }
