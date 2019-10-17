@@ -1,4 +1,4 @@
-package ru.itis.web_project.controllers;
+package ru.itis.web_project.utils;
 
 import ru.itis.web_project.DAO.UserDAO;
 import ru.itis.web_project.models.User;
