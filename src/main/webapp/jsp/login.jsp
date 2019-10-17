@@ -12,21 +12,24 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
 <body>
 
 
 <div class="container">
-    <form class="form-signin">
+    <form class="form-signin" method="post" action="/">
         <h2 class="form-signin-heading">Пожалуйста введите почту и пароль</h2>
+
         <label for="inputEmail" class="sr-only">Почта</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="user@mail.ru" required="" autofocus="">
+        <input name="login" type="email" id="inputEmail" class="form-control" placeholder="user@mail.ru" required="" autofocus="">
+
         <label for="inputPassword" class="sr-only">Пароль</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="qwerty" required="">
+        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="qwerty" required="">
+
         <div class="checkbox">
             <label>
-                <input type="checkbox" value="remember-me"> Запомнить меня
+                <input name="remember" type="checkbox" value="remember-me"> Запомнить меня
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Отправить</button>

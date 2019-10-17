@@ -1,0 +1,17 @@
+package ru.itis.web_project.controllers;
+
+import ru.itis.web_project.DAO.UserDAO;
+import ru.itis.web_project.models.User;
+
+public class UserController {
+    public static boolean registrUser(String phoneNumber, String username, String login, String password, String address) {
+        User user = new User();
+        user.setPhone_number(phoneNumber);
+        user.setPassword(String.valueOf(password.hashCode()));
+        user.setLogin(login);
+        user.setName(username);
+        user.setAddress(address);
+        user.setRole(2);
+        return UserDAO.insertUser(user);
+    }
+}

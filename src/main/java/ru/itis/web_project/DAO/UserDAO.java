@@ -70,8 +70,8 @@ public class UserDAO {
         return Optional.ofNullable(list);
     }
 
-    public static void insertUser(User user) {
-        String sqlQuery = "INSERT INTO user (login, name, password, role_id, phone_number, address, registr_date) VALUES (?,?,?,?,?,? NOW())";
+    public static boolean insertUser(User user) {
+        String sqlQuery = "INSERT INTO user (login, name, password, role_id, phone_number, address, registr_date) VALUES (?,?,?,?,?,?, NOW())";
         try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
             ps.setString(1, user.getLogin());
             ps.setString(2, user.getName());
@@ -79,10 +79,11 @@ public class UserDAO {
             ps.setInt(4, user.getRole());
             ps.setString(5, user.getPhone_number());
             ps.setString(6, user.getAddress());
-            ps.execute();
+            return !ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     public static void deleteUserById(Integer id) {

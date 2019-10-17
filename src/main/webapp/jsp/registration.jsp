@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="кг">
 <head>
@@ -12,28 +13,44 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
 <body>
 
 <div class="container">
-    <form class="form-signin">
+    <form class="form-signin" method="post" action="/registration">
+        <%--ЕСЛИ БЫЛА ПОПЫТКА зарегестрироваться, выводит успешна ли она или нет--%>
+        <%= request.getAttribute("registr-status") != null ? (String) request.getAttribute("registr-status") : ""%>
+
+        <%--
+        <c:if test="${registr-status != null}">
+        <c:out value="${registr-status}"/>
+        </c:if>
+        --%>
+
         <h2 class="form-signin-heading">Регистрация</h2>
 
         <label for="inputNumber" class="sr-only">Номер</label>
-        <input type="number" id="inputNumber" class="form-control" placeholder="+79999999999" required="" autofocus="">
+        <input name="phoneNumber" type="number" id="inputNumber" class="form-control" placeholder="+79999999999"
+               required="" autofocus="">
 
         <label for="inputName" class="sr-only">Имя</label>
-        <input type="text" id="inputName" class="form-control" placeholder="Ivan" required="" autofocus="">
+        <input name="username" type="text" id="inputName" class="form-control" placeholder="Ivan" required=""
+               autofocus="">
+
+        <label for="inputAddress" class="sr-only">Имя</label>
+        <input name="address" type="text" id="inputAddress" class="form-control" placeholder="Your Address" required=""
+               autofocus="">
 
         <label for="inputEmail" class="sr-only">Почта</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="user@mail.ru" required="" autofocus="">
+        <input name="login" type="email" id="inputEmail" class="form-control" placeholder="user@mail.ru" required=""
+               autofocus="">
 
         <label for="inputPassword" class="sr-only">Пароль</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="qwerty" required="">
+        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="qwerty" required="">
         <div class="checkbox">
             <label>
-                <input type="checkbox" value="remember-me"> Запомнить меня
+                <input type="checkbox" name="remember" value="remember"> Запомнить меня
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Отправить</button>
