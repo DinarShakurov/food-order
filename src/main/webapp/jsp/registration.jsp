@@ -20,13 +20,7 @@
 <div class="container">
     <form class="form-signin" method="post" action="/registration">
         <%--ЕСЛИ БЫЛА ПОПЫТКА зарегестрироваться, выводит успешна ли она или нет--%>
-        <%= request.getAttribute("registr-status") != null ? (String) request.getAttribute("registr-status") : ""%>
-
-        <%--
-        <c:if test="${registr-status != null}">
-        <c:out value="${registr-status}"/>
-        </c:if>
-        --%>
+        <c:out value="${registrStatus}"/>
 
         <h2 class="form-signin-heading">Регистрация</h2>
 

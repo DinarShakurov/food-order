@@ -14,9 +14,9 @@ import java.io.PrintWriter;
 public class RegistrServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (UserController.registrUser(request.getParameter("phoneNumber"), request.getParameter("username"), request.getParameter("login"), request.getParameter("password"), request.getParameter("address"))) {
-            request.setAttribute("registr-status", "Регистрация прошла успешна");
+            request.setAttribute("registrStatus", "Регистрация прошла успешна");
         } else{
-            request.setAttribute("registr-status", "Ошибка, попробуйте заново");
+            request.setAttribute("registrStatus", "Ошибка, попробуйте заново");
         }
         request.getRequestDispatcher("/jsp/registration.jsp").forward(request, response);
     }
