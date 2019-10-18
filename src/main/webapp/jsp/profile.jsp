@@ -56,6 +56,9 @@
                             <c:out value="${sessionScope.username}"/>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                            <a class="dropdown-item" href="#">Профиль</a>                        <%--ALL--%>
+
                             <c:if test="${accessId == 2}">
                                 <a class="dropdown-item" href="#">Корзина</a>                   <%--USER--%>
                             </c:if>
