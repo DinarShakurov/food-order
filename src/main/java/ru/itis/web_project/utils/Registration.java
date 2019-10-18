@@ -3,7 +3,7 @@ package ru.itis.web_project.utils;
 import ru.itis.web_project.DAO.UserDAO;
 import ru.itis.web_project.models.User;
 
-public class UserController {
+public class Registration {
     public static boolean registrUser(String phoneNumber, String username, String login, String password, String address) {
         User user = new User();
         user.setPhone_number(phoneNumber);

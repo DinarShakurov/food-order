@@ -75,4 +75,18 @@ public class User {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", role=" + role +
+                ", date=" + date +
+                ", phone_number='" + phone_number + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }

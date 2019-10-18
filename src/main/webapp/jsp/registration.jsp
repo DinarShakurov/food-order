@@ -42,11 +42,7 @@
 
         <label for="inputPassword" class="sr-only">Пароль</label>
         <input name="password" type="password" id="inputPassword" class="form-control" placeholder="qwerty" required="">
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" name="remember" value="remember"> Запомнить меня
-            </label>
-        </div>
+
         <button class="btn btn-lg btn-primary btn-block" type="submit">Отправить</button>
     </form>
 

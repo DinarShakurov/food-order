@@ -12,7 +12,9 @@ import java.util.Optional;
 public class Authorization {
 
     public static boolean isItCorrect(HttpServletRequest request, HttpServletResponse response) {
+
         Optional<User> user = UserDAO.findUserByLoginAndPassword(request.getParameter("login"), String.valueOf(request.getParameter("password").hashCode()));
+
         if (user.isEmpty()) {
             return false;
         } else {

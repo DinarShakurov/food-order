@@ -52,7 +52,7 @@ public class UserDAO {
     }
 
     public static Optional<User> findUserByLoginAndPassword(String login, String password) {
-        String sqlQuery = "SELECT * FROM user WHERE  login = ? & password = ?";
+        String sqlQuery = "SELECT * FROM user WHERE  login = ? AND password = ?";
         User user = null ;
         try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
             ps.setString(1, login);

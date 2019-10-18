@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ru">
 <head>
@@ -18,7 +19,9 @@
 
 
 <div class="container">
-    <form class="form-signin" method="post" action="/">
+    <form class="form-signin" method="post" action="/login">
+        <c:out value="${loginStatus}"/>
+
         <h2 class="form-signin-heading">Пожалуйста введите почту и пароль</h2>
 
         <label for="inputEmail" class="sr-only">Почта</label>
