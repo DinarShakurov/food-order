@@ -101,7 +101,7 @@
 
                 </h3>
                 <h6>
-                    ресторан китайской кухни
+                    ресторан бичёвской кухни
                 </h6>
                 <p class="proile-rating">Ваши бонусы: <span>2000</span></p>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
