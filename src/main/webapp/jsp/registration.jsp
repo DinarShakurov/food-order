@@ -94,19 +94,24 @@
         <c:out value="${registrStatus}"/>
 
         <h2 class="form-signin-heading">Регистрация</h2>
+        <br>
 
         <label for="inputName" class="sr-only">Имя</label>
         <input type="text" id="inputName" class="form-control" placeholder="имя" required="" autofocus="">
 
 
         <label for="inputNumber" class="sr-only">Номер</label>
-        <input type="number" id="inputNumber" class="form-control" placeholder="номер телефона" required="" autofocus="">
+        <input type="number" id="inputNumber" class="form-control" placeholder="номер телефона" required=""
+               autofocus="">
+        <br>
 
         <label for="inputEmail" class="sr-only">Почта</label>
         <input type="email" id="inputEmail" class="form-control" placeholder="email" required="" autofocus="">
+        <br>
 
         <label for="inputPassword" class="sr-only">Пароль</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="пароль" required="a">
+        <br>
 
         <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Отправить</button>
     </form>

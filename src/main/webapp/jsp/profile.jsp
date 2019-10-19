@@ -60,7 +60,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-                            <a class="dropdown-item active" href="/profile">Профиль</a>                        <%--ALL--%>
+                            <a class="dropdown-item active" href="/profile">Профиль</a> <%--ALL--%>
 
                             <c:if test="${accessId == 2}">
                                 <a class="dropdown-item" href="#">Корзина</a>                   <%--USER--%>
@@ -201,7 +201,8 @@
                     <div class="row">
                         <div class="col-md-6 change-form">
                             <label for="inputOldPassword" class="sr-only">Пароль</label>
-                            <input type="password" id="inputOldPassword" class="form-control" placeholder="старый пароль"
+                            <input type="password" id="inputOldPassword" class="form-control"
+                                   placeholder="старый пароль"
                                    required="a">
                             <br>
                             <label for="inputNewPassword" class="sr-only">Пароль</label>
@@ -211,9 +212,38 @@
                         </div>
 
                         <div class="col-md-4 change-btn">
-                            <button class="btn btn-lg btn-outline-primary btn-block" type="submit" >Изменить</button>
+                            <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Изменить</button>
                         </div>
                     </div>
+                </div>
+                <div class="tab-pane fade show orders col-md-12" id="history" role="tabpanel"
+                     aria-labelledby="history-tab">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Список блюд</th>
+                            <th>Цена</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th>1</th>
+                            <td>Борщ, картофель фри</td>
+                            <td>200 рублей</td>
+                        </tr>
+                        <tr>
+                            <th>2</th>
+                            <td>Бич пакет</td>
+                            <td>2000 рублей</td>
+                        </tr>
+                        <tr>
+                            <th>3</th>
+                            <td>автомат по сетям</td>
+                            <td>бесценно</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

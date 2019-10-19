@@ -1,5 +1,9 @@
-.container{
+.container {
     text-align: center;
     width: 30em;
     margin-top: 10em;
+}
+
+.checkbox {
+    text-align: left;
 }

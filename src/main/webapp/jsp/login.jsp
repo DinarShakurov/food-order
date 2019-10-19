@@ -60,7 +60,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-                            <a class="dropdown-item" href="#">Профиль</a>                        <%--ALL--%>
+                            <a class="dropdown-item" href="#">Профиль</a> <%--ALL--%>
 
                             <c:if test="${accessId == 2}">
                                 <a class="dropdown-item" href="#">Корзина</a>                   <%--USER--%>
@@ -92,12 +92,16 @@
         <c:out value="${loginStatus}"/>
 
         <h2 class="form-heading">Войти</h2>
+        <br>
 
         <label for="inputEmail" class="sr-only">Почта</label>
-        <input name="login" type="email" id="inputEmail" class="form-control" placeholder="user@mail.ru" required="" autofocus="">
+        <input name="login" type="email" id="inputEmail" class="form-control" placeholder="user@mail.ru" required=""
+               autofocus="">
+        <br>
 
         <label for="inputPassword" class="sr-only">Пароль</label>
-        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="password" required="">
+        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="password"
+               required="">
 
         <div class="checkbox">
             <label>
