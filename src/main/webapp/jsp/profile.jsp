@@ -25,7 +25,7 @@
         </button>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/main">Главная <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -60,7 +60,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-                            <a class="dropdown-item" href="/profile">Профиль</a>                        <%--ALL--%>
+                            <a class="dropdown-item active" href="/profile">Профиль</a>                        <%--ALL--%>
 
                             <c:if test="${accessId == 2}">
                                 <a class="dropdown-item" href="#">Корзина</a>                   <%--USER--%>
@@ -176,32 +176,48 @@
                 </div>
                 <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 change-form">
                             <label for="inputName" class="sr-only">Имя</label>
                             <input type="text" id="inputName" class="form-control" placeholder="имя" required=""
-                                   autofocus="">
-
+                                   autofocus="" value="Иван">
+                            <br>
 
                             <label for="inputNumber" class="sr-only">Номер</label>
                             <input type="number" id="inputNumber" class="form-control" placeholder="номер телефона"
-                                   required="" autofocus="">
+                                   required="" autofocus="" value="79999">
+                            <br>
 
                             <label for="inputEmail" class="sr-only">Почта</label>
                             <input type="email" id="inputEmail" class="form-control" placeholder="email" required=""
-                                   autofocus="">
-
-                            <label for="inputPassword" class="sr-only">Пароль</label>
-                            <input type="password" id="inputPassword" class="form-control" placeholder="пароль"
+                                   autofocus="" value="user@mail.ru">
+                            <br>
+                        </div>
+                        <div class="col-md-4 change-btn">
+                            <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Изменить</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="password" role="tabpanel" aria-labelledby="password-tab">
+                    <div class="row">
+                        <div class="col-md-6 change-form">
+                            <label for="inputOldPassword" class="sr-only">Пароль</label>
+                            <input type="password" id="inputOldPassword" class="form-control" placeholder="старый пароль"
                                    required="a">
+                            <br>
+                            <label for="inputNewPassword" class="sr-only">Пароль</label>
+                            <input type="password" id="inputNewPassword" class="form-control" placeholder="новый пароль"
+                                   required="a">
+                            <br>
+                        </div>
 
-                            <button class="btn btn-lg btn-primary btn-block" type="submit">Отправить</button>
+                        <div class="col-md-4 change-btn">
+                            <button class="btn btn-lg btn-outline-primary btn-block" type="submit" >Изменить</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <%--/form>--%>
 </div>
 
 <!-- Optional JavaScript -->

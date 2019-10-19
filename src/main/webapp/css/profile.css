@@ -94,8 +94,17 @@ body{
     color: #0062cc;
 }
 
-.notfound{
+.notfound .user{
     text-align: center;
     margin-top: 8em;
     vertical-align: center;
+}
+
+.change-form{
+    text-align: center;
+    margin-left: auto;
+}
+
+.change-btn{
+    margin-left: 100%;
 }

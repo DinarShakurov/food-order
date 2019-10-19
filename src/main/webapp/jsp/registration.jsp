@@ -26,7 +26,7 @@
         </button>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/main">Главная <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -46,7 +46,7 @@
             <ul class="navbar-nav ml-auto">
                 <c:if test="${accessId == null}">
 
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="#">Зарегестрироваться</a>
                     </li>
                     <li class="nav-item">
