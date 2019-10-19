@@ -13,7 +13,7 @@ public class Authorization {
 
     public static boolean isItCorrect(HttpServletRequest request, HttpServletResponse response) {
 
-        Optional<User> user = UserDAO.findUserByLoginAndPassword(request.getParameter("login"), String.valueOf(request.getParameter("password").hashCode()));
+        Optional<User> user = UserDAO.findUserByLoginAndPassword(request.getParameter("login"), HashPassword.getHash(request.getParameter("password")));
 
         if (user.isEmpty()) {
             return false;
