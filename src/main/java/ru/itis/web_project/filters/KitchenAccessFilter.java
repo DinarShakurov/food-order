@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName = "UserAccessFilter")
-public class UserAccessFilter implements Filter {
+@WebFilter(filterName = "KitchenAccessFilter")
+public class KitchenAccessFilter implements Filter {
     public void destroy() {
     }
 
@@ -18,7 +18,7 @@ public class UserAccessFilter implements Filter {
         HttpSession session = request.getSession(false);
         Integer accessId = (Integer) session.getAttribute("accessId");
 
-        if (accessId == 2) {
+        if (accessId == 4 || accessId == 1) {
             chain.doFilter(req, resp);
         } else {
             request.getRequestDispatcher("/jsp/404.jsp").forward(request, response);
