@@ -52,10 +52,10 @@
                 <c:if test="${accessId == null}">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Зарегестрироваться</a>
+                        <a class="nav-link" href="/registration">Зарегестрироваться</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Войти</a>
+                        <a class="nav-link" href="/login">Войти</a>
                     </li>
                 </c:if>
                 <c:if test="${accessId != null}">
@@ -66,7 +66,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-                            <a class="dropdown-item" href="#">Профиль</a>                        <%--ALL--%>
+                            <a class="dropdown-item" href="/profile">Профиль</a>                        <%--ALL--%>
 
                             <c:if test="${accessId == 2}">
                                 <a class="dropdown-item" href="#">Корзина</a>                   <%--USER--%>
