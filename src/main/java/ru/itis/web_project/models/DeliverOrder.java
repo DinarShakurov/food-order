@@ -2,7 +2,7 @@ package ru.itis.web_project.models;
 
 import java.sql.Date;
 
-public class DeliveryOrder {
+public class DeliverOrder {
     private Integer id;
     private Integer id_user;
     private Date date;

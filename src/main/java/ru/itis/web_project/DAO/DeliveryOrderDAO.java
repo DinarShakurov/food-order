@@ -1,6 +1,6 @@
 package ru.itis.web_project.DAO;
 
-import ru.itis.web_project.models.DeliveryOrder;
+import ru.itis.web_project.models.DeliverOrder;
 import ru.itis.web_project.utils.ConnectionJDBC;
 
 import java.sql.Connection;
@@ -14,8 +14,8 @@ import java.util.Optional;
 public class DeliveryOrderDAO {
     private static final Connection connection = ConnectionJDBC.getConnection();
 
-    public static Optional<List<DeliveryOrder>> getAllDeliveryOrders() {
-        List<DeliveryOrder> list = null;
+    public static Optional<List<DeliverOrder>> getAllDeliveryOrders() {
+        List<DeliverOrder> list = null;
         String sqlQuery = "SELECT * FROM delivery_orders ORDER BY date";
         try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
             try (ResultSet rs = ps.executeQuery()) {
@@ -33,8 +33,8 @@ public class DeliveryOrderDAO {
         return Optional.ofNullable(list);
     }
 
-    public static Optional<List<DeliveryOrder>> getAllDeliveryOrdersByIdUser(Integer id_user) {
-        List<DeliveryOrder> list = null;
+    public static Optional<List<DeliverOrder>> getAllDeliveryOrdersByIdUser(Integer id_user) {
+        List<DeliverOrder> list = null;
         String sqlQuery = "SELECT * FROM delivery_orders WHERE id_user = ? ORDER BY date";
         try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
             ps.setInt(1, id_user);
@@ -53,7 +53,7 @@ public class DeliveryOrderDAO {
         return Optional.ofNullable(list);
     }
 
-    public static void insertDeliveryOrder(DeliveryOrder deliveryOrder) {
+    public static void insertDeliveryOrder(DeliverOrder deliveryOrder) {
         String sqlQuery = "INSERT INTO delivery_orders (id_user, count_dish, id_menu, date) VALUES (?,?,?, NOW())";
         try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
             ps.setInt(1, deliveryOrder.getId_user());
@@ -65,8 +65,8 @@ public class DeliveryOrderDAO {
         }
     }
 
-    private static RowMapper<DeliveryOrder> rowMapper = row -> {
-        DeliveryOrder deliveryOrder = new DeliveryOrder();
+    private static RowMapper<DeliverOrder> rowMapper = row -> {
+        DeliverOrder deliveryOrder = new DeliverOrder();
         deliveryOrder.setId(row.getInt("id"));
         deliveryOrder.setId_user(row.getInt("id_user"));
         deliveryOrder.setId_menu(row.getInt("id_menu"));

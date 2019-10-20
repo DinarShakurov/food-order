@@ -31,7 +31,7 @@
                     <a class="nav-link" href="/main">Главная <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Меню</a>
+                    <a class="nav-link" href="/menu">Меню</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Галерея</a>
