@@ -41,8 +41,7 @@ public class Authorization {
     private static void setAttributesForSession(HttpServletRequest request, Optional<User> user) {
         User user1 = user.get();
         HttpSession session = request.getSession(true);
-        session.setAttribute("userId", user1.getId());
-        session.setAttribute("username", user1.getName());
-        session.setAttribute("accessId", user1.getRole());
+        session.setAttribute("user", user1);
+
     }
 }

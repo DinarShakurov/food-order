@@ -17,7 +17,10 @@
 <body>
 <div class="notfound">
     <h1 id="404">404 not founded</h1>
-    <button type="button" class="btn btn-success">Вернуться на главную</button>
+    <form action="/main">
+        <button type="submit" class="btn btn-success">Вернуться на главную</button>
+    </form>
+
 </div>
 
 

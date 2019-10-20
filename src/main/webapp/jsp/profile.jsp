@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html lang="ru">
 <head>
     <!-- Required meta tags -->
@@ -14,7 +15,8 @@
     <link rel="stylesheet" href="../css/profile.css">
 </head>
 <body>
-<c:set var="accessId" value="${sessionScope.accessId}"/>
+<c:set var="accessId" value="${sessionScope.user.role}"/>
+
 
 <header>
     <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
@@ -56,7 +58,7 @@
                     <li class="nav-justified dropleft justify-content-end">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <c:out value="${sessionScope.username}"/>
+                            <c:out value="${sessionScope.user.name}"/>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 

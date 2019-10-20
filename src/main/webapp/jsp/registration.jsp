@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="../css/style.css" type="text/css">
 </head>
 <body>
-<c:set var="accessId" value="${sessionScope.accessId}"/>
+<c:set var="accessId" value="${sessionScope.user.role}"/>
+
 
 <header>
     <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-primary">
@@ -47,17 +48,17 @@
                 <c:if test="${accessId == null}">
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Зарегестрироваться</a>
+                        <a class="nav-link" href="/registration">Зарегестрироваться</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Войти</a>
+                        <a class="nav-link" href="/login">Войти</a>
                     </li>
                 </c:if>
                 <c:if test="${accessId != null}">
                     <li class="nav-justified dropleft justify-content-end">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <c:out value="${sessionScope.username}"/>
+                            <c:out value="${sessionScope.user.name}"/>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 

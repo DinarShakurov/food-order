@@ -1,5 +1,7 @@
 package ru.itis.web_project.filters;
 
+import ru.itis.web_project.models.User;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +18,7 @@ public class WaiterAccessFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) resp;
         HttpServletRequest request = (HttpServletRequest) req;
         HttpSession session = request.getSession(false);
-        Integer accessId = (Integer) session.getAttribute("accessId");
+        Integer accessId =  ((User) session.getAttribute("user")).getRole() ;
 
         if (accessId == 3 || accessId == 1) {
             chain.doFilter(req, resp);

@@ -1,5 +1,6 @@
 package ru.itis.web_project.filters;
 
+import ru.itis.web_project.models.User;
 import ru.itis.web_project.utils.Authorization;
 
 import javax.servlet.*;
@@ -21,7 +22,7 @@ public class ProfileFilter implements Filter {
         HttpSession session = request.getSession(false);
 
         boolean UserHasAccess = false;
-        if (session == null || session.getAttribute("userId") == null) {
+        if (session == null || ((User) session.getAttribute("user")).getId()  == null) {
             Cookie[] cookies = request.getCookies();
             if (cookies != null) {
                 for (Cookie cookie : cookies) {

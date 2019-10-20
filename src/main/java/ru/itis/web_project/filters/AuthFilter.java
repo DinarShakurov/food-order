@@ -1,5 +1,6 @@
 package ru.itis.web_project.filters;
 
+import ru.itis.web_project.models.User;
 import ru.itis.web_project.utils.Authorization;
 
 import javax.servlet.*;
@@ -17,7 +18,7 @@ public class AuthFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) resp;
 
         HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("userId") != null) {
+        if (session != null && session.getAttribute("user") != null) {
             response.sendRedirect("/main");
             return;
         } else {
