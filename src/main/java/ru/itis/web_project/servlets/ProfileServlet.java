@@ -1,5 +1,7 @@
 package ru.itis.web_project.servlets;
 
+import ru.itis.web_project.models.User;
+import ru.itis.web_project.utils.delivery_utils.DeliveryTableUtil;
 import ru.itis.web_project.utils.EditProfile;
 
 import javax.servlet.ServletException;
@@ -15,18 +17,19 @@ public class ProfileServlet extends HttpServlet {
         String oldPassword = request.getParameter("oldPassword");
         if (oldPassword != null) {
             if (EditProfile.editPassword(request)) {
-                request.setAttribute("changePasswordStatus","Пароль был успешно изменён");
+                request.setAttribute("changePasswordStatus", "Пароль был успешно изменён");
             } else {
-                request.setAttribute("changePasswordStatus","Предыдущий пароль был введён неверно");
+                request.setAttribute("changePasswordStatus", "Предыдущий пароль был введён неверно");
             }
         } else {
             EditProfile.editMainInfo(request);
-            request.setAttribute("changeMainInfoStatus","Данные изменены успешно");
+            request.setAttribute("changeMainInfoStatus", "Данные изменены успешно");
         }
         request.getRequestDispatcher("/jsp/profile.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("deliveryList", DeliveryTableUtil.getTableDeliveryOrder(((User) request.getSession().getAttribute("user")).getId()));
         request.getRequestDispatcher("/jsp/profile.jsp").forward(request, response);
     }
 }

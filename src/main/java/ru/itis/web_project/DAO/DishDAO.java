@@ -46,19 +46,21 @@ public class DishDAO {
         return Optional.ofNullable(list);
     }
 
-    /**
-     * пока не знаю для чего нужен этот метод, по этому не реализовывал
-     *
-     * @param id
-     * @return
-     */
+
     public static Optional<Dish> getDishById(Integer id) {
-        String sqlQuery = "";
+        String sqlQuery = "SELECT * FROM menu WHERE id = ?";
+        Dish dish = null;
         try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if(rs.next()){
+                    dish = rowMapper.mapRow(rs);
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return Optional.ofNullable(dish);
     }
 
     public static Optional<List<Dish>> getAllDishesByCategory(Integer id_category) {

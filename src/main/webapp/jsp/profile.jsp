@@ -180,7 +180,7 @@
                 </div>
                 <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <form method="post" action="/profile">
-                    <div class="row">
+                        <div class="row">
                             <div class="col-md-6 change-form">
                                 <label for="inputName" class="sr-only">Имя</label>
                                 <input name="editName" type="text" id="inputName" class="form-control"
@@ -214,7 +214,7 @@
                             <div class="col-md-4 change-btn">
                                 <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Изменить</button>
                             </div>
-                    </div>
+                        </div>
                     </form>
                 </div>
                 <div class="tab-pane fade show" id="password" role="tabpanel" aria-labelledby="password-tab">
@@ -247,26 +247,27 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Список блюд</th>
-                            <th>Цена</th>
+                            <th>Название блюда</th>
+                            <th>В каком количестве</th>
+                            <th>Цена за ед.</th>
+                            <th>Дата</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td>Борщ, картофель фри</td>
-                            <td>200 рублей</td>
-                        </tr>
-                        <tr>
-                            <th>2</th>
-                            <td>Бич пакет</td>
-                            <td>2000 рублей</td>
-                        </tr>
-                        <tr>
-                            <th>3</th>
-                            <td>автомат по сетям</td>
-                            <td>бесценно</td>
-                        </tr>
+
+                        <c:set var="i" scope="page" value="1"/>
+                        <c:forEach var="orders" items="${deliveryList}">
+                            <tr>
+                                <th>${i}</th>
+                                <td>${orders.name_dish}</td>
+                                <td>${orders.count_id_menu}</td>
+                                <td>${orders.price}</td>
+                                <td>${orders.date}</td>
+                            </tr>
+                            <c:set var="i" scope="page" value="${i+1}"/>
+                        </c:forEach>
+
+
                         </tbody>
                     </table>
                 </div>
