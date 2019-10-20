@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="ru">
 <head>
     <!-- Required meta tags -->
@@ -13,7 +15,7 @@
 </head>
 
 <body>
-<c:set var="accessId" value="${sessionScope.accessId}"/>
+<c:set var="accessId" value="${sessionScope.user.role}"/>
 
 <header>
     <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
@@ -28,7 +30,7 @@
                     <a class="nav-link" href="/main">Главная <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Меню</a>
+                    <a class="nav-link" href="/menu">Меню</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Галерея</a>
@@ -59,7 +61,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-                            <a class="dropdown-item" href="#">Профиль</a> <%--ALL--%>
+                            <a class="dropdown-item" href="/profile">Профиль</a> <%--ALL--%>
 
                             <c:if test="${accessId == 2}">
                                 <a class="dropdown-item" href="#">Корзина</a> <%--USER--%>
