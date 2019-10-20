@@ -42,6 +42,5 @@ public class Authorization {
         User user1 = user.get();
         HttpSession session = request.getSession(true);
         session.setAttribute("user", user1);
-
     }
 }

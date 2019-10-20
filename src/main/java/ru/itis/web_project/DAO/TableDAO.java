@@ -29,7 +29,7 @@ public class TableDAO {
     }
 
     public static void updateTable(Table table) {
-        String sqlQuery = "UPDATE table SET (count_guests) VALUE (?) WHERE id = ?";
+        String sqlQuery = "UPDATE table SET count_guests =?  WHERE id = ?";
         try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
             ps.setInt(1, table.getCountOfGuests());
             ps.setInt(2, table.getId());

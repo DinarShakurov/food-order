@@ -82,7 +82,7 @@ public class DishDAO {
     }
 
     public static void updateDish(Dish dish) {
-        String sqlQuery = "UPDATE menu SET (name_dish, price, composition, id_category) VALUES (?,?,?,?) WHERE id = ?";
+        String sqlQuery = "UPDATE menu SET name_dish=?, price=?, composition=?, id_category=?  WHERE id = ?";
         try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
             ps.setString(1, dish.getName());
             ps.setInt(2, dish.getPrice());

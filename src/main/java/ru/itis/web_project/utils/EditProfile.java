@@ -1,15 +1,37 @@
 package ru.itis.web_project.utils;
 
+import ru.itis.web_project.DAO.UserDAO;
+import ru.itis.web_project.models.User;
+
+import javax.servlet.http.HttpServletRequest;
+
 public class EditProfile {
-    public static void editMainInfo(){
-
+    public static void editMainInfo(HttpServletRequest request) {
+        User currentUser = (User) request.getSession().getAttribute("user");
+        currentUser.setName(request.getParameter("editName"));
+        currentUser.setPhone_number(request.getParameter("editPhoneNumber"));
+        currentUser.setAddress(request.getParameter("editAddress"));
+        currentUser.setLogin(request.getParameter("editLogin"));
+        request.getSession().setAttribute("user", currentUser);
+        UserDAO.updateUser(currentUser);
     }
 
-    public static void editPassword(){
-
+    public static boolean editPassword(HttpServletRequest request) {
+        String oldPassword = request.getParameter("oldPassword");
+        String newPassword = request.getParameter("newPassword");
+        return checkIsCorrectOldPasswordAndUpdate(oldPassword, newPassword, request);
     }
 
-    private static boolean checkIsCorrectOldPassword(){
-        return true;
+    private static boolean checkIsCorrectOldPasswordAndUpdate(String oldPass, String newPass, HttpServletRequest request) {
+        User currentUser = (User) request.getSession().getAttribute("user");
+        if (HashPassword.getHash(oldPass).equals(currentUser.getPassword())) {
+            currentUser.setPassword(HashPassword.getHash(newPass));
+            request.getSession().setAttribute("user", currentUser);
+            UserDAO.updateUser(currentUser);
+            return true;
+        } else {
+            return false;
+        }
+
     }
 }

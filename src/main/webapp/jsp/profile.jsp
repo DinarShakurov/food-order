@@ -112,6 +112,8 @@
                 <h6>
                     ресторан бичёвской кухни
                 </h6>
+                <h6><c:out value="${changePasswordStatus}"/></h6>
+                <h6><c:out value="${changeMainInfoStatus}"/></h6>
                 <p class="proile-rating">Ваши бонусы: <span>2000</span></p>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
@@ -182,14 +184,14 @@
                             <div class="col-md-6 change-form">
                                 <label for="inputName" class="sr-only">Имя</label>
                                 <input name="editName" type="text" id="inputName" class="form-control"
-                                       placeholder="имя"                <%--СМОТРЕТЬ ИМЯ ПАРАМЕТРА ТУТ--%>
+                                       placeholder="имя"                                                             <%--СМОТРЕТЬ ИМЯ ПАРАМЕТРА ТУТ--%>
                                        required=""
                                        autofocus="" value="<c:out value="${sessionScope.user.name}"/>">
                                 <br>
 
                                 <label for="inputNumber" class="sr-only">Номер</label>
                                 <input name="editPhoneNumber" type="number" id="inputNumber"
-                                       class="form-control"                <%--СМОТРЕТЬ ИМЯ ПАРАМЕТРА ТУТ--%>
+                                       class="form-control"                                                          <%--СМОТРЕТЬ ИМЯ ПАРАМЕТРА ТУТ--%>
                                        placeholder="номер телефона"
                                        required="" autofocus=""
                                        value="<c:out value="${sessionScope.user.phone_number}"/>">
@@ -197,14 +199,14 @@
 
                                 <label for="inputEmail" class="sr-only">Почта</label>
                                 <input name="editLogin" type="email" id="inputEmail"
-                                       class="form-control"                <%--СМОТРЕТЬ ИМЯ ПАРАМЕТРА ТУТ--%>
+                                       class="form-control"                                                          <%--СМОТРЕТЬ ИМЯ ПАРАМЕТРА ТУТ--%>
                                        placeholder="email" required=""
                                        autofocus="" value="<c:out value="${sessionScope.user.login}"/>">
                                 <br>
 
                                 <label for="inputAddress" class="sr-only">Почта</label>
                                 <input name="editAddress" type="text" id="inputAddress"
-                                       class="form-control"                <%--СМОТРЕТЬ ИМЯ ПАРАМЕТРА ТУТ--%>
+                                       class="form-control"                                                          <%--СМОТРЕТЬ ИМЯ ПАРАМЕТРА ТУТ--%>
                                        placeholder="address" required=""
                                        autofocus="" value="<c:out value="${sessionScope.user.address}"/>">
                                 <br>
@@ -221,13 +223,13 @@
                             <div class="col-md-6 change-form">
                                 <label for="inputOldPassword" class="sr-only">Пароль</label>
                                 <input name="oldPassword" type="password" id="inputOldPassword"
-                                       class="form-control"                <%--СМОТРЕТЬ ИМЯ ПАРАМЕТРА ТУТ--%>
+                                       class="form-control"                                                             <%--СМОТРЕТЬ ИМЯ ПАРАМЕТРА ТУТ--%>
                                        placeholder="старый пароль"
                                        required="a">
                                 <br>
                                 <label for="inputNewPassword" class="sr-only">Пароль</label>
                                 <input name="newPassword" type="password" id="inputNewPassword"
-                                       class="form-control"                <%--СМОТРЕТЬ ИМЯ ПАРАМЕТРА ТУТ--%>
+                                       class="form-control"                                                             <%--СМОТРЕТЬ ИМЯ ПАРАМЕТРА ТУТ--%>
                                        placeholder="новый пароль"
                                        required="a">
                                 <br>
