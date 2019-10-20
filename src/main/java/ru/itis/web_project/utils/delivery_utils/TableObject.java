@@ -7,6 +7,15 @@ public class TableObject {
     private Integer count_id_menu;
     private Integer price;
     private Date date;
+    private Integer id_menu;
+
+    public Integer getId_menu() {
+        return id_menu;
+    }
+
+    public void setId_menu(Integer id_menu) {
+        this.id_menu = id_menu;
+    }
 
     public String getName_dish() {
         return name_dish;
