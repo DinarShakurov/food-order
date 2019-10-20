@@ -19,7 +19,7 @@
 <c:set var="accessId" value="${sessionScope.user.role}"/>
 
 <header>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-primary">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
         <a class="navbar-brand" href="#">Restaurant</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +37,7 @@
                     <a class="nav-link" href="#">Галерея</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Акция</a>
+                    <a class="nav-link" href="#">Акции</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Отзывы</a>

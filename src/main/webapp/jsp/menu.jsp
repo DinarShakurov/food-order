@@ -11,14 +11,14 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Menu</title>
-    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="../css/menu.css">
 </head>
 
 <body>
 <c:set var="accessId" value="${sessionScope.user.role}"/>
 
 <header>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
         <a class="navbar-brand" href="#">Restaurant</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,7 +36,7 @@
                     <a class="nav-link" href="#">Галерея</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Акция</a>
+                    <a class="nav-link" href="#">Акции</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Отзывы</a>
@@ -100,58 +100,18 @@
                         <img src="image/soup.png">
                         <div class="card-body">
                             <p class="card-text">Инфа о блюде</p>
+                            <br>
                             <div class="d-flex justify-content-between align-items-center">
                                 <small class="text-muted">цена</small>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Удалить</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Добавить</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img src="image/dish.jpg">
-                        <div class="card-body">
-                            <p class="card-text">Инфа о блюде</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted">цена</small>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Удалить</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Добавить</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img src="image/soup.png">
-                        <div class="card-body">
-                            <p class="card-text">Инфа о блюде</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted">цена</small>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Удалить</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Добавить</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img src="image/soup.png">
-                        <div class="card-body">
-                            <p class="card-text">Инфа о блюде</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted">цена</small>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Удалить</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Добавить</button>
-                                </div>
+                                <form>
+                                    <div><input type="number" min="0" max="999" step="1" value="0" pattern="[0-9]*">
+                                    </div>
+                                    <br>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Добавить</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Удалить</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

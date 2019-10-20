@@ -2,8 +2,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ru">
 <head>
-    <title>Registration</title>
-
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,11 +10,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <title>Profile</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-<c:set var="accessId" value="${sessionScope.user.role}"/>
-
+<c:set var="accessId" value="${sessionScope.accessId}"/>
 
 <header>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
@@ -47,7 +45,7 @@
             <ul class="navbar-nav ml-auto">
                 <c:if test="${accessId == null}">
 
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="/registration">Зарегестрироваться</a>
                     </li>
                     <li class="nav-item">
@@ -62,7 +60,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-                            <a class="dropdown-item" href="#">Профиль</a> <%--ALL--%>
+                            <a class="dropdown-item active" href="/profile">Профиль</a> <%--ALL--%>
 
                             <c:if test="${accessId == 2}">
                                 <a class="dropdown-item" href="#">Корзина</a> <%--USER--%>
@@ -85,40 +83,64 @@
                     </li>
                 </c:if>
             </ul>
+
         </div>
     </nav>
 </header>
 
-<div class="container">
-    <form class="form-signin" method="post" action="/registration">
-        <%--ЕСЛИ БЫЛА ПОПЫТКА зарегестрироваться, выводит успешна ли она или нет--%>
-        <c:out value="${registrStatus}"/>
+<form>
+    <table class="table basket">
+        <thead>
+        <tr>
+        </tr>
+        <tr>
+            <th>#</th>
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Количество</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td class="name">Борщ</td>
+            <td>360 рублей</td>
+            <td>
+                1
+            </td>
+            <td>
 
-        <h2 class="form-signin-heading">Регистрация</h2>
-        <br>
+                <button type="button" class="btn btn-sm btn-outline-primary">Удалить</button>
 
-        <label for="inputName" class="sr-only">Имя</label>
-        <input type="text" id="inputName" class="form-control" placeholder="имя" required="" autofocus="">
+            </td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td class="name">Индейка</td>
+            <td>360 рублей</td>
+            <td>
+                2
+            </td>
+            <td>
+                <button type="button" class="btn btn-sm btn-outline-primary">Удалить</button>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
 
-
-        <label for="inputNumber" class="sr-only">Номер</label>
-        <input type="number" id="inputNumber" class="form-control" placeholder="номер телефона" required=""
-               autofocus="">
-        <br>
-
-        <label for="inputEmail" class="sr-only">Почта</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="email" required="" autofocus="">
-        <br>
-
-        <label for="inputPassword" class="sr-only">Пароль</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="пароль" required="a">
-        <br>
-
-        <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Отправить</button>
-    </form>
-
-</div>
-
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                Всего: 720 рублей
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</form>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
