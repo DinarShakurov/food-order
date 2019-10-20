@@ -1,25 +1,22 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ru">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>login</title>
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Menu</title>
+    <link rel="stylesheet" href="profile.css">
 </head>
 
 <body>
-<c:set var="accessId" value="${sessionScope.user.role}"/>
+<c:set var="accessId" value="${sessionScope.accessId}"/>
 
 <header>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-primary">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
         <a class="navbar-brand" href="#">Restaurant</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,7 +62,7 @@
                             <a class="dropdown-item" href="#">Профиль</a> <%--ALL--%>
 
                             <c:if test="${accessId == 2}">
-                                <a class="dropdown-item" href="#">Корзина</a>                   <%--USER--%>
+                                <a class="dropdown-item" href="#">Корзина</a> <%--USER--%>
                             </c:if>
                             <c:if test="${accessId == 1}">
                                 <a class="dropdown-item" href="#">Администрирование меню</a> <%--ADMIN--%>
@@ -89,30 +86,79 @@
     </nav>
 </header>
 
-<div class="container">
-    <form class="form" method="post" action="/login">
-        <c:out value="${loginStatus}"/>
+<div class="menu">
+    <h1>Меню</h1>
+    <div class="album py-5">
+        <div class="container">
 
-        <h2 class="form-heading">Войти</h2>
-        <br>
+            <div class="row">
 
-        <label for="inputEmail" class="sr-only">Почта</label>
-        <input name="login" type="email" id="inputEmail" class="form-control" placeholder="user@mail.ru" required=""
-               autofocus="">
-        <br>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="image/soup.png">
+                        <div class="card-body">
+                            <p class="card-text">Инфа о блюде</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">цена</small>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Удалить</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Добавить</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="image/dish.jpg">
+                        <div class="card-body">
+                            <p class="card-text">Инфа о блюде</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">цена</small>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Удалить</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Добавить</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <label for="inputPassword" class="sr-only">Пароль</label>
-        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="password"
-               required="">
-
-        <div class="checkbox">
-            <label>
-                <input name="remember" type="checkbox" value="remember-me"> Запомнить меня
-            </label>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="image/soup.png">
+                        <div class="card-body">
+                            <p class="card-text">Инфа о блюде</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">цена</small>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Удалить</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Добавить</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="image/soup.png">
+                        <div class="card-body">
+                            <p class="card-text">Инфа о блюде</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">цена</small>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Удалить</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Добавить</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Отправить</button>
-    </form>
-</div> <!-- /container -->
+    </div>
+</div>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

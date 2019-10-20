@@ -177,8 +177,8 @@
                     </div>
                 </div>
                 <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <form method="post" action="/profile">
                     <div class="row">
-                        <form method="post" action="/profile">
                             <div class="col-md-6 change-form">
                                 <label for="inputName" class="sr-only">Имя</label>
                                 <input name="editName" type="text" id="inputName" class="form-control"
@@ -212,12 +212,12 @@
                             <div class="col-md-4 change-btn">
                                 <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Изменить</button>
                             </div>
-                        </form>
                     </div>
+                    </form>
                 </div>
                 <div class="tab-pane fade show" id="password" role="tabpanel" aria-labelledby="password-tab">
-                    <div class="row">
-                        <form method="post" action="/profile">
+                    <form method="post" action="/profile">
+                        <div class="row">
                             <div class="col-md-6 change-form">
                                 <label for="inputOldPassword" class="sr-only">Пароль</label>
                                 <input name="oldPassword" type="password" id="inputOldPassword"
@@ -236,8 +236,8 @@
                             <div class="col-md-4 change-btn">
                                 <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Изменить</button>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="tab-pane fade show orders col-md-12" id="history" role="tabpanel"
                      aria-labelledby="history-tab">
