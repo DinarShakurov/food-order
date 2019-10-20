@@ -148,7 +148,7 @@
                             <label>Имя</label>
                         </div>
                         <div class="col-md-6">
-                            <p>Иван</p>
+                            <p><c:out value="${sessionScope.user.name}"/></p>
                         </div>
                     </div>
                     <div class="row">
@@ -156,7 +156,7 @@
                             <label>Email</label>
                         </div>
                         <div class="col-md-6">
-                            <p>user@gmail.com</p>
+                            <p><c:out value="${sessionScope.user.login}"/></p>
                         </div>
                     </div>
                     <div class="row">
@@ -164,7 +164,7 @@
                             <label>Номер телефона</label>
                         </div>
                         <div class="col-md-6">
-                            <p>+799999</p>
+                            <p><c:out value="${sessionScope.user.phone_number}"/></p>
                         </div>
                     </div>
                     <div class="row">
@@ -178,44 +178,65 @@
                 </div>
                 <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="row">
-                        <div class="col-md-6 change-form">
-                            <label for="inputName" class="sr-only">Имя</label>
-                            <input type="text" id="inputName" class="form-control" placeholder="имя" required=""
-                                   autofocus="" value="Иван">
-                            <br>
+                        <form method="post" action="/profile">
+                            <div class="col-md-6 change-form">
+                                <label for="inputName" class="sr-only">Имя</label>
+                                <input name="editName" type="text" id="inputName" class="form-control"
+                                       placeholder="имя"                <%--СМОТРЕТЬ ИМЯ ПАРАМЕТРА ТУТ--%>
+                                       required=""
+                                       autofocus="" value="<c:out value="${sessionScope.user.name}"/>">
+                                <br>
 
-                            <label for="inputNumber" class="sr-only">Номер</label>
-                            <input type="number" id="inputNumber" class="form-control" placeholder="номер телефона"
-                                   required="" autofocus="" value="79999">
-                            <br>
+                                <label for="inputNumber" class="sr-only">Номер</label>
+                                <input name="editPhoneNumber" type="number" id="inputNumber"
+                                       class="form-control"                <%--СМОТРЕТЬ ИМЯ ПАРАМЕТРА ТУТ--%>
+                                       placeholder="номер телефона"
+                                       required="" autofocus=""
+                                       value="<c:out value="${sessionScope.user.phone_number}"/>">
+                                <br>
 
-                            <label for="inputEmail" class="sr-only">Почта</label>
-                            <input type="email" id="inputEmail" class="form-control" placeholder="email" required=""
-                                   autofocus="" value="user@mail.ru">
-                            <br>
-                        </div>
-                        <div class="col-md-4 change-btn">
-                            <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Изменить</button>
-                        </div>
+                                <label for="inputEmail" class="sr-only">Почта</label>
+                                <input name="editLogin" type="email" id="inputEmail"
+                                       class="form-control"                <%--СМОТРЕТЬ ИМЯ ПАРАМЕТРА ТУТ--%>
+                                       placeholder="email" required=""
+                                       autofocus="" value="<c:out value="${sessionScope.user.login}"/>">
+                                <br>
+
+                                <label for="inputAddress" class="sr-only">Почта</label>
+                                <input name="editAddress" type="text" id="inputAddress"
+                                       class="form-control"                <%--СМОТРЕТЬ ИМЯ ПАРАМЕТРА ТУТ--%>
+                                       placeholder="address" required=""
+                                       autofocus="" value="<c:out value="${sessionScope.user.address}"/>">
+                                <br>
+                            </div>
+                            <div class="col-md-4 change-btn">
+                                <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Изменить</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="tab-pane fade show" id="password" role="tabpanel" aria-labelledby="password-tab">
                     <div class="row">
-                        <div class="col-md-6 change-form">
-                            <label for="inputOldPassword" class="sr-only">Пароль</label>
-                            <input type="password" id="inputOldPassword" class="form-control"
-                                   placeholder="старый пароль"
-                                   required="a">
-                            <br>
-                            <label for="inputNewPassword" class="sr-only">Пароль</label>
-                            <input type="password" id="inputNewPassword" class="form-control" placeholder="новый пароль"
-                                   required="a">
-                            <br>
-                        </div>
+                        <form method="post" action="/profile">
+                            <div class="col-md-6 change-form">
+                                <label for="inputOldPassword" class="sr-only">Пароль</label>
+                                <input name="oldPassword" type="password" id="inputOldPassword"
+                                       class="form-control"                <%--СМОТРЕТЬ ИМЯ ПАРАМЕТРА ТУТ--%>
+                                       placeholder="старый пароль"
+                                       required="a">
+                                <br>
+                                <label for="inputNewPassword" class="sr-only">Пароль</label>
+                                <input name="newPassword" type="password" id="inputNewPassword"
+                                       class="form-control"                <%--СМОТРЕТЬ ИМЯ ПАРАМЕТРА ТУТ--%>
+                                       placeholder="новый пароль"
+                                       required="a">
+                                <br>
+                            </div>
 
-                        <div class="col-md-4 change-btn">
-                            <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Изменить</button>
-                        </div>
+                            <div class="col-md-4 change-btn">
+                                <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Изменить</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="tab-pane fade show orders col-md-12" id="history" role="tabpanel"
