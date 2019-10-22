@@ -68,9 +68,9 @@ public class AddingDishes {
 
     public static void deleteDishFromBasket(HttpServletRequest request) {
         Integer deleted_id = Integer.parseInt(request.getParameter("deleted_id"));
-        Integer count_deleted_id = Integer.parseInt(request.getParameter("count_deleted_id"));
+        Integer count_deleted_id = Integer.parseInt(request.getParameter("deleted_count_id"));
 
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(false);
         List<TableObject> orderList = (ArrayList) session.getAttribute("orderDeliveryList");
 
         for (TableObject tableObject : orderList) {

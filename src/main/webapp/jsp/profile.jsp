@@ -65,7 +65,7 @@
                             <a class="dropdown-item active" href="/profile">Профиль</a> <%--ALL--%>
 
                             <c:if test="${accessId == 2}">
-                                <a class="dropdown-item" href="#">Корзина</a>                   <%--USER--%>
+                                <a class="dropdown-item" href="/basket">Корзина</a>                   <%--USER--%>
                             </c:if>
                             <c:if test="${accessId == 1}">
                                 <a class="dropdown-item" href="#">Администрирование меню</a> <%--ADMIN--%>
