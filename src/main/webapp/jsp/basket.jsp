@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-<c:set var="accessId" value="${sessionScope.accessId}"/>
+<c:set var="accessId" value="${sessionScope.user.role}"/>
 
 <header>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
@@ -29,7 +29,7 @@
                     <a class="nav-link" href="/main">Главная <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Меню</a>
+                    <a class="nav-link" href="/menu">Меню</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Галерея</a>
@@ -63,7 +63,7 @@
                             <a class="dropdown-item active" href="/profile">Профиль</a> <%--ALL--%>
 
                             <c:if test="${accessId == 2}">
-                                <a class="dropdown-item" href="#">Корзина</a> <%--USER--%>
+                                <a class="dropdown-item" href="/basket">Корзина</a> <%--USER--%>
                             </c:if>
                             <c:if test="${accessId == 1}">
                                 <a class="dropdown-item" href="#">Администрирование меню</a> <%--ADMIN--%>
@@ -102,40 +102,37 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1</td>
-            <td class="name">Борщ</td>
-            <td>360 рублей</td>
-            <td>
-                1
-            </td>
-            <td>
 
-                <button type="button" class="btn btn-sm btn-outline-primary">Удалить</button>
+        <c:set var="i" value="${1}"/>
+        <c:forEach var="order" items="${sessionScope.orderDeliveryList}">
+            <form action="/basket" method="post">
+                <tr>
 
-            </td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td class="name">Индейка</td>
-            <td>360 рублей</td>
-            <td>
-                2
-            </td>
-            <td>
-                <button type="button" class="btn btn-sm btn-outline-primary">Удалить</button>
-            </td>
-        </tr>
+                    <td><c:out value="i"/></td>
+                    <td class="name"><c:out value="${order.name_dish}"/></td>
+
+                    <td><c:out value="${order.price}"/></td>
+                    <td><c:out value="${order.count_id_menu}"/></td>
+                    <td><input type="hidden" name="deleted_count_id" value="${order.id_count_menu}"></td>
+                    <td><input type="hidden" name="deleted_id" value="${order.id_menu}"></td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-outline-primary">Удалить</button>
+                    </td>
+                </tr>
+            </form>
+            <c:set var="i" value="${i+1}"/>
+        </c:forEach>
+
         </tbody>
         <tfoot>
-
         <tr>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
             <td>
-                Всего: 720 рублей
+                <c:out value="Итого:"/>
+                <c:out value="${sessionScope.totalPriceFromBasket}"/>
             </td>
         </tr>
         </tfoot>

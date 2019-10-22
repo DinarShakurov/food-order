@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName = "UserAccessFilter")
+@WebFilter(urlPatterns = {"/basket"})
 public class UserAccessFilter implements Filter {
     public void destroy() {
     }

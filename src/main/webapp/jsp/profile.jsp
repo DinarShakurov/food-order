@@ -255,10 +255,10 @@
                         </thead>
                         <tbody>
 
-                        <c:set var="i" scope="page" value="1"/>
+                        <c:set var="i" scope="page" value="${1}"/>
                         <c:forEach var="orders" items="${deliveryList}">
                             <tr>
-                                <th>${i}</th>
+                                <td>${i}</td>
                                 <td>${orders.name_dish}</td>
                                 <td>${orders.count_id_menu}</td>
                                 <td>${orders.price}</td>

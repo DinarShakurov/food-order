@@ -25,7 +25,6 @@ public class AddingDishes {
         if (orderList == null) {
             orderList = new ArrayList<>();
 
-            totalPriceFromBasket = 0;
         }
 
         Integer id_menu = Integer.parseInt(request.getParameter("id_menu"));
@@ -37,7 +36,7 @@ public class AddingDishes {
         tableObject.setId_menu(id_menu);
         tableObject.setName_dish(dish.getName());
         tableObject.setPrice(dish.getPrice());
-
+        tableObject.setDate(new Date(System.currentTimeMillis()));
         totalPriceFromBasket = totalPriceFromBasket + dish.getPrice() * id_count_menu;
 
         orderList.add(tableObject);
