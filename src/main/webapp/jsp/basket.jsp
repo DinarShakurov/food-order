@@ -88,56 +88,59 @@
     </nav>
 </header>
 
-<form>
-    <table class="table basket">
-        <thead>
-        <tr>
-        </tr>
-        <tr>
-            <th>#</th>
-            <th>Название</th>
-            <th>Цена</th>
-            <th>Количество</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
 
-        <c:set var="i" value="${1}"/>
-        <c:forEach var="order" items="${sessionScope.orderDeliveryList}">
-            <form action="/basket" method="post">
-                <tr>
+<table class="table basket">
+    <thead>
+    <tr>
+    </tr>
+    <tr>
+        <th>#</th>
+        <th>Название</th>
+        <th>Цена</th>
+        <th>Количество</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:out value="buyStatus"/>
+    <c:set var="i" value="${1}"/>
+    <c:forEach var="order" items="${sessionScope.orderDeliveryList}">
+        <form action="/basket" method="post">
+            <tr>
 
-                    <td><c:out value="i"/></td>
-                    <td class="name"><c:out value="${order.name_dish}"/></td>
+                <td><c:out value="i"/></td>
+                <td class="name"><c:out value="${order.name_dish}"/></td>
 
-                    <td><c:out value="${order.price}"/></td>
-                    <td><c:out value="${order.count_id_menu}"/></td>
-                    <td><input type="hidden" name="deleted_count_id" value="${order.id_count_menu}"></td>
-                    <td><input type="hidden" name="deleted_id" value="${order.id_menu}"></td>
-                    <td>
-                        <button type="button" class="btn btn-sm btn-outline-primary">Удалить</button>
-                    </td>
-                </tr>
+                <td><c:out value="${order.price}"/></td>
+                <td><c:out value="${order.count_id_menu}"/></td>
+                <td><input type="hidden" name="deleted_count_id" value="${order.id_count_menu}"></td>
+                <td><input type="hidden" name="deleted_id" value="${order.id_menu}"></td>
+                <td>
+                    <button type="button" class="btn btn-sm btn-outline-primary">Удалить</button>
+                </td>
+            </tr>
+        </form>
+        <c:set var="i" value="${i+1}"/>
+    </c:forEach>
+
+    </tbody>
+    <tfoot>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            <c:out value="Итого:"/>
+            <c:out value="${sessionScope.totalPriceFromBasket}"/>
+            <form method="post" action="/basket">
+                <button name="buyAll" value="buyAll" type="button" class="btn btn-sm btn-outline-secondary">Добавить
+                </button>
             </form>
-            <c:set var="i" value="${i+1}"/>
-        </c:forEach>
-
-        </tbody>
-        <tfoot>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <c:out value="Итого:"/>
-                <c:out value="${sessionScope.totalPriceFromBasket}"/>
-            </td>
-        </tr>
-        </tfoot>
-    </table>
-</form>
+        </td>
+    </tr>
+    </tfoot>
+</table>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

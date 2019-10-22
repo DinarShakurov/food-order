@@ -15,8 +15,13 @@ public class BasketServlet extends HttpServlet {
         if (request.getParameter("buyAll") == null) {
             AddingDishes.deleteDishFromBasket(request);
         } else {
-            if (request.getSession(false).getAttribute("orderDeliveryList") != null)
+            if (request.getSession(false).getAttribute("orderDeliveryList") != null) {
+
                 AddingDishes.buyFromBasket(request);
+                request.setAttribute("buyStatus", "Заказ был добавлен");
+            } else {
+                request.setAttribute("buyStatus", "Нечего заказывать, додик");
+            }
         }
         request.getRequestDispatcher("/jsp/basket.jsp").forward(request, response);
 
