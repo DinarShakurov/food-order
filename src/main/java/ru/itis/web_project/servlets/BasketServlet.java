@@ -16,7 +16,6 @@ public class BasketServlet extends HttpServlet {
             AddingDishes.deleteDishFromBasket(request);
         } else {
             if (request.getSession(false).getAttribute("orderDeliveryList") != null) {
-
                 AddingDishes.buyFromBasket(request);
                 request.setAttribute("buyStatus", "Заказ был добавлен");
             } else {

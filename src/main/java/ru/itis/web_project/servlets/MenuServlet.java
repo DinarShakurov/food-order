@@ -19,7 +19,7 @@ public class MenuServlet extends HttpServlet {
             AddingDishes.toBasket(request);
         } else {
         }
-        request.getRequestDispatcher("/jsp/menu.jsp").forward(request, response);
+        doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

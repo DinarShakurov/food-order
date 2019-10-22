@@ -17,7 +17,7 @@
 <body>
 <c:set var="accessId" value="${sessionScope.user.role}"/>
 
-<%@ include file="header.jsp"%>
+<%@ include file="header.jsp" %>
 
 <div class="menu">
     <h1>Меню</h1>
@@ -39,7 +39,10 @@
                                         <small class="text-muted">цена: ${dish.price}</small>
 
                                         <div>
-                                            <input name="id_count_menu" type="number" min="1" max="10" step="1" value="1" pattern="[0-9]*">
+                                            <c:if test="${accessId == 2}">
+                                                <input name="id_count_menu" type="number" min="1" max="10" step="1" value="1"
+                                                       pattern="[0-9]*">
+                                            </c:if>
                                             <input name="id_menu" value="${dish.id}" type="hidden">
                                         </div>
                                         <br>

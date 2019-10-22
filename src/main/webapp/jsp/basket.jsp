@@ -40,11 +40,12 @@
 
                 <td><c:out value="${order.price}"/></td>
                 <td><c:out value="${order.count_id_menu}"/></td>
+
+                <td>
+                    <button type="submit" class="btn btn-sm btn-outline-primary">Удалить</button>
+                </td>
                 <td><input type="hidden" name="deleted_count_id" value="${order.count_id_menu}"></td>
                 <td><input type="hidden" name="deleted_id" value="${order.id_menu}"></td>
-                <td>
-                    <button type="button" class="btn btn-sm btn-outline-primary">Удалить</button>
-                </td>
             </tr>
         </form>
         <c:set var="i" value="${i+1}"/>
