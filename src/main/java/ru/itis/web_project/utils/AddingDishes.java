@@ -37,11 +37,17 @@ public class AddingDishes {
         tableObject.setPrice(dish.getPrice());
         tableObject.setDate(new Date(System.currentTimeMillis()));
         totalPriceFromBasket = totalPriceFromBasket + dish.getPrice() * id_count_menu;
-        orderList.add(tableObject);
-        for (TableObject table :
-                orderList) {
-            System.out.println(table.toString());
+
+
+        boolean tag = false;
+        for (TableObject tableObj : orderList) {
+            if (tableObj.getId_menu() == tableObject.getId_menu() && tableObj.getCount_id_menu() == tableObject.getCount_id_menu()) {
+                tableObj.setCount_id_menu(tableObj.getCount_id_menu() + tableObject.getCount_id_menu());
+                tag = true;
+                break;
+            }
         }
+        if (!tag) orderList.add(tableObject);
 
         session.setAttribute("totalPriceFromBasket", totalPriceFromBasket);
         session.setAttribute("orderDeliveryList", orderList);
