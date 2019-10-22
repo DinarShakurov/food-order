@@ -45,6 +45,17 @@ public class TableObject {
         return date;
     }
 
+    @Override
+    public String toString() {
+        return "TableObject{" +
+                "name_dish='" + name_dish + '\'' +
+                ", count_id_menu=" + count_id_menu +
+                ", price=" + price +
+                ", date=" + date +
+                ", id_menu=" + id_menu +
+                '}';
+    }
+
     public void setDate(Date date) {
         this.date = date;
     }

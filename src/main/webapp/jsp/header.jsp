@@ -1,4 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %><c:set var="accessId" value="${sessionScope.accessId}"/>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:set var="accessId" value="${sessionScope.accessId}"/>
 
 <c:set var="accessId" value="${sessionScope.user.role}"/>
 <header>
@@ -14,7 +15,7 @@
                     <a class="nav-link" href="/main">Главная <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Меню</a>
+                    <a class="nav-link" href="/menu">Меню</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Галерея</a>
@@ -31,24 +32,24 @@
                 <c:if test="${accessId == null}">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Зарегестрироваться</a>
+                        <a class="nav-link" href="/registration">Зарегестрироваться</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Войти</a>
+                        <a class="nav-link" href="/login">Войти</a>
                     </li>
                 </c:if>
                 <c:if test="${accessId != null}">
                     <li class="nav-justified dropleft justify-content-end">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <c:out value="${sessionScope.username}"/>
+                            <c:out value="${sessionScope.user.name}"/>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-                            <a class="dropdown-item" href="#">Профиль</a> <%--ALL--%>
+                            <a class="dropdown-item" href="/profile">Профиль</a> <%--ALL--%>
 
                             <c:if test="${accessId == 2}">
-                                <a class="dropdown-item" href="#">Корзина</a> <%--USER--%>
+                                <a class="dropdown-item" href="/basket">Корзина</a> <%--USER--%>
                             </c:if>
                             <c:if test="${accessId == 1}">
                                 <a class="dropdown-item" href="#">Администрирование меню</a> <%--ADMIN--%>

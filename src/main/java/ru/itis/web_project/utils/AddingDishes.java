@@ -16,9 +16,9 @@ import java.util.List;
 public class AddingDishes {
 
     public static void toBasket(HttpServletRequest request) {
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(false);
 
-        List<TableObject> orderList = (ArrayList) session.getAttribute("orderDeliveryList");
+        List<TableObject> orderList = (ArrayList<TableObject>) session.getAttribute("orderDeliveryList");
         User user = (User) session.getAttribute("user");
         Integer totalPriceFromBasket = (Integer) session.getAttribute("totalPriceFromBasket");
 
@@ -30,7 +30,6 @@ public class AddingDishes {
         Integer id_menu = Integer.parseInt(request.getParameter("id_menu"));
         Integer id_count_menu = Integer.parseInt(request.getParameter("id_count_menu"));
         Dish dish = DishDAO.getDishById(id_menu).get();
-
         TableObject tableObject = new TableObject();
         tableObject.setCount_id_menu(id_count_menu);
         tableObject.setId_menu(id_menu);
@@ -38,8 +37,11 @@ public class AddingDishes {
         tableObject.setPrice(dish.getPrice());
         tableObject.setDate(new Date(System.currentTimeMillis()));
         totalPriceFromBasket = totalPriceFromBasket + dish.getPrice() * id_count_menu;
-
         orderList.add(tableObject);
+        for (TableObject table :
+                orderList) {
+            System.out.println(table.toString());
+        }
 
         session.setAttribute("totalPriceFromBasket", totalPriceFromBasket);
         session.setAttribute("orderDeliveryList", orderList);

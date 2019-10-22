@@ -25,22 +25,22 @@
         <th>Название</th>
         <th>Цена</th>
         <th>Количество</th>
+        <th>Кнопка</th>
         <th></th>
     </tr>
     </thead>
     <tbody>
-    <c:out value="buyStatus"/>
     <c:set var="i" value="${1}"/>
     <c:forEach var="order" items="${sessionScope.orderDeliveryList}">
         <form action="/basket" method="post">
             <tr>
 
-                <td><c:out value="i"/></td>
+                <td><c:out value="${i}"/></td>
                 <td class="name"><c:out value="${order.name_dish}"/></td>
 
                 <td><c:out value="${order.price}"/></td>
                 <td><c:out value="${order.count_id_menu}"/></td>
-                <td><input type="hidden" name="deleted_count_id" value="${order.id_count_menu}"></td>
+                <td><input type="hidden" name="deleted_count_id" value="${order.count_id_menu}"></td>
                 <td><input type="hidden" name="deleted_id" value="${order.id_menu}"></td>
                 <td>
                     <button type="button" class="btn btn-sm btn-outline-primary">Удалить</button>
@@ -61,14 +61,15 @@
             <c:out value="Итого:"/>
             <c:out value="${sessionScope.totalPriceFromBasket}"/>
             <form method="post" action="/basket">
-                <button name="buyAll" value="buyAll" type="button" class="btn btn-sm btn-outline-secondary">Добавить
+                <button name="buyAll" value="buyAll" type="submit" class="btn btn-sm btn-outline-secondary">Добавить
                 </button>
             </form>
         </td>
     </tr>
     </tfoot>
-</table>
 
+</table>
+<c:out value="${buyStatus}"/>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
