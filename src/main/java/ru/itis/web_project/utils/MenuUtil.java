@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class MenuUtil {
-    public static void displayMenu(HttpServletRequest request) {
+    public static void getMenuList(HttpServletRequest request) {
         Optional<List<Dish>> listOptional = DishDAO.getAllDishes();
         if (listOptional.isPresent()) {
             List<Dish> list = listOptional.get();

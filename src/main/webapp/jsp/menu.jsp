@@ -21,6 +21,7 @@
 
 <div class="menu">
     <h1>Меню</h1>
+    <c:out value="${addingStatus}"/>
     <div class="album py-5">
         <div class="container">
             <%--foreach--%>

@@ -24,4 +24,18 @@ public class RoleDAO {
         }
         return null;
     }
+
+    public static Integer getIdByName(String name) {
+        String sqlQuery = "SELECT id FROM role WHERE name = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
+            ps.setString(1, name);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next())
+                    return rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 2;
+    }
 }

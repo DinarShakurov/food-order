@@ -71,7 +71,7 @@ public class UserDAO {
 
     public static Optional<List<User>> getAllUsers() {
         ArrayList<User> list = null;
-        String sqlQuery = "SELECT * FROM user GROUP BY role_id";
+        String sqlQuery = "SELECT * FROM user ORDER BY role_id";
         try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
