@@ -31,7 +31,7 @@
     <tbody>
     <c:set var="i" value="${1}"/>
     <c:forEach var="order" items="${sessionScope.orderDeliveryList}">
-        <form action="/basket" method="post">
+        <form action="/profile/basket" method="post">
             <tr>
 
                 <td><c:out value="${i}"/></td>
@@ -53,7 +53,7 @@
     </tbody>
     <tfoot>
     <tr>
-        <form method="post" action="/basket">
+        <form method="post" action="/profile/basket">
             <td></td>
             <td></td>
             <td></td>

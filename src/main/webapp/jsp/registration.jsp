@@ -26,20 +26,25 @@
         <br>
 
         <label for="inputName" class="sr-only">Имя</label>
-        <input type="text" id="inputName" class="form-control" placeholder="имя" required="" autofocus="">
+        <input name="username" type="text" id="inputName" class="form-control" placeholder="имя" required="" autofocus="">
         <br>
 
         <label for="inputNumber" class="sr-only">Номер</label>
-        <input type="number" id="inputNumber" class="form-control" placeholder="номер телефона" required=""
+        <input name="phoneNumber" type="number" id="inputNumber" class="form-control" placeholder="номер телефона" required=""
+               autofocus="">
+        <br>
+
+        <label for="inputAddress" class="sr-only">Номер</label>
+        <input name="address" type="text" id="inputAddress" class="form-control" placeholder="адрес" required=""
                autofocus="">
         <br>
 
         <label for="inputEmail" class="sr-only">Почта</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="email" required="" autofocus="">
+        <input name="login" type="email" id="inputEmail" class="form-control" placeholder="email" required="" autofocus="">
         <br>
 
         <label for="inputPassword" class="sr-only">Пароль</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="пароль" required="a">
+        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="пароль" required="a">
         <br>
 
         <button class="btn btn-lg btn-success btn-block" type="submit">Отправить</button>

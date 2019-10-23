@@ -7,7 +7,7 @@ import ru.itis.web_project.utils.HashPassword;
 
 import java.util.List;
 
-public class UserActions {
+public class AdminsAction {
     public static boolean registerUser(String phoneNumber, String username, String login, String password, String address, String role) {
         User user = new User();
         user.setPhone_number(phoneNumber);
