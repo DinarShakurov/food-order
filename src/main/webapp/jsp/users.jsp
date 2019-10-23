@@ -6,53 +6,67 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Login</title>
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <title>Users</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-
 <body>
 <%@ include file="header.jsp" %>
 
-<div class="container">
-    <form class="form" method="post" action="/login">
-
-
-        <h2 class="form-heading">Войти</h2>
-        <br>
-
-        <label for="inputEmail" class="sr-only">Почта</label>
-        <input name="login" type="email" id="inputEmail" class="form-control" placeholder="user@mail.ru" required=""
-               autofocus="">
-        <br>
-
-        <label for="inputPassword" class="sr-only">Пароль</label>
-        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="password"
-               required="">
-
-        <div class="checkbox">
-            <label>
-                <input name="remember" type="checkbox" value="remember-me"> Запомнить меня
-            </label>
-        </div>
-        <button class="btn btn-lg btn-success btn-block" type="submit">Отправить</button>
-        <div>
-            Первый раз? <a href="/registration" class="link" style="color: aqua">Зарегистрируйся</a>.
-        </div>
-
-        <c:if test="${loginStatus != null}">
-            <div class="alert alert-danger" role="alert">
-                <c:out value="${loginStatus}"/>
-            </div>
-        </c:if>
-
+<table class="table basket">
+    <thead>
+    <tr>
+    </tr>
+    <tr>
+        <th>Id</th>
+        <th>Login</th>
+        <th>Username</th>
+        <th>Phone number</th>
+        <th>Address</th>
+        <th>Register date</th>
+        <th>Role</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <form>
+        <tr>
+            <td>1</td>
+            <td>login</td>
+            <td>name</td>
+            <td>1234</td>
+            <td>Kanzas</td>
+            <td>12.03.2313</td>
+            <td>user</td>
+            <td>
+                <button type="submit" class="btn btn-sm btn-outline-danger">Удалить</button>
+            </td>
+        </tr>
     </form>
-</div> <!-- /container -->
 
+    </tbody>
+    <tfoot>
+    <tr>
+        <form method="post" action="/basket">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <button value="add" type="submit" class="btn btn-sm btn-success">Добавить работника
+                </button>
+            </td>
+        </form>
+    </tr>
+    </tfoot>
+
+</table>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

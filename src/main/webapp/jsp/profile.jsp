@@ -12,7 +12,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Profile</title>
-    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="../css/profile.css">
 </head>
 <body>
 <%@ include file="header.jsp"%>
@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="profile-img">
-                <img src="/image/rest.png" alt=""/>
+                <img src="../image/rest.png" alt=""/>
                 <div class="file btn btn-lg btn-success">
                     Изменить фото
                     <input type="file" name="file"/>

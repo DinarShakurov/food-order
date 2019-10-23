@@ -2,56 +2,50 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ru">
 <head>
+    <title>Registration Worker</title>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <title>Login</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
 </head>
-
 <body>
 <%@ include file="header.jsp" %>
 
 <div class="container">
-    <form class="form" method="post" action="/login">
+    <form class="form-signin" method="post" action="/registration">
+        <%--ЕСЛИ БЫЛА ПОПЫТКА зарегестрироваться, выводит успешна ли она или нет--%>
+        <c:out value="${registrStatus}"/>
 
-
-        <h2 class="form-heading">Войти</h2>
+        <h2 class="form-signin-heading">Регистрация</h2>
         <br>
 
-        <label for="inputEmail" class="sr-only">Почта</label>
-        <input name="login" type="email" id="inputEmail" class="form-control" placeholder="user@mail.ru" required=""
+        <label for="inputName" class="sr-only">Имя</label>
+        <input type="text" id="inputName" class="form-control" placeholder="имя" required="" autofocus="">
+        <br>
+
+        <label for="inputNumber" class="sr-only">Номер</label>
+        <input type="number" id="inputNumber" class="form-control" placeholder="номер телефона" required=""
                autofocus="">
         <br>
 
+        <label for="inputEmail" class="sr-only">Почта</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="email" required="" autofocus="">
+        <br>
+
         <label for="inputPassword" class="sr-only">Пароль</label>
-        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="password"
-               required="">
+        <input type="password" id="inputPassword" class="form-control" placeholder="пароль" required="a">
+        <br>
 
-        <div class="checkbox">
-            <label>
-                <input name="remember" type="checkbox" value="remember-me"> Запомнить меня
-            </label>
-        </div>
         <button class="btn btn-lg btn-success btn-block" type="submit">Отправить</button>
-        <div>
-            Первый раз? <a href="/registration" class="link" style="color: aqua">Зарегистрируйся</a>.
-        </div>
-
-        <c:if test="${loginStatus != null}">
-            <div class="alert alert-danger" role="alert">
-                <c:out value="${loginStatus}"/>
-            </div>
-        </c:if>
-
     </form>
-</div> <!-- /container -->
+
+</div>
 
 
 <!-- Optional JavaScript -->

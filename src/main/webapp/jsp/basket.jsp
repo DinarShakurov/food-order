@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-<%@ include file="header.jsp"%>
+<%@ include file="header.jsp" %>
 
 <table class="table basket">
     <thead>
@@ -54,21 +54,26 @@
     <tfoot>
     <tr>
         <form method="post" action="/basket">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><c:out value="Итого:"/>
-            <c:out value="${sessionScope.totalPriceFromBasket}"/></td>
-        <td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Итого:
+                <c:out value="${sessionScope.totalPriceFromBasket}"/></td>
+            <td>
                 <button name="buyAll" value="buyAll" type="submit" class="btn btn-sm btn-success">Заказать
                 </button>
-        </td>
+            </td>
         </form>
     </tr>
     </tfoot>
 
 </table>
-<h3 style="text-align: center"><c:out value="${buyStatus}"/></h3>
+
+<c:if test="${buyStatus != null}">
+    <div class="alert alert-success" role="alert">
+        <c:out value="${buyStatus}"/>
+    </div>
+</c:if>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

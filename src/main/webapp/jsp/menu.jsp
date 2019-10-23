@@ -21,17 +21,22 @@
 
 <div class="menu">
     <h1>Меню</h1>
-    <c:out value="${addingStatus}"/>
+
+    <c:if test="${addingStatus != null}">
+        <div class="alert alert-success status" role="alert">
+            <c:out value="${addingStatus}"/>
+        </div>
+    </c:if>
+
     <div class="album py-5">
         <div class="container">
             <%--foreach--%>
             <c:forEach var="dish" items="${menuList}">
                 <form method="post" action="/menu">
                     <div class="row">
-
                         <div class="col-md-4">
                             <div class="card mb-4 shadow-sm">
-                                <img src="image/soup.png">
+                                <img src="../image/dish.jpg">
                                 <div class="card-body">
                                     <p class="card-text">Название: ${dish.name}</p>
                                     <p class="card-text">Инфа о блюде: ${dish.composition}</p>
@@ -41,25 +46,28 @@
 
                                         <div>
                                             <c:if test="${accessId == 2}">
-                                                <input name="id_count_menu" type="number" min="1" max="10" step="1" value="1"
+                                                <input name="id_count_menu" type="number" min="1" max="10" step="1"
+                                                       value="1"
                                                        pattern="[0-9]*">
                                             </c:if>
                                             <input name="id_menu" value="${dish.id}" type="hidden">
                                         </div>
+
                                         <br>
                                         <div class="btn-group">
                                             <c:if test="${accessId == 2}">
-                                                <button name="add" value="add" type="submit" class="btn btn-sm btn-outline-secondary">
+                                                <button name="add" value="add" type="submit"
+                                                        class="btn btn-sm btn-outline-success">
                                                     Добавить
                                                 </button>
                                             </c:if>
                                             <c:if test="${accessId == 1}">
-                                                <button name="delete" value="delete" type="submit" class="btn btn-sm btn-outline-secondary">
+                                                <button name="delete" value="delete" type="submit"
+                                                        class="btn btn-sm btn-outline-danger">
                                                     Удалить
                                                 </button>
                                             </c:if>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
