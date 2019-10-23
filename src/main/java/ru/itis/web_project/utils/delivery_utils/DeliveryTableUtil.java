@@ -14,7 +14,7 @@ public class DeliveryTableUtil {
     public static List<ru.itis.web_project.utils.delivery_utils.TableObject> getTableDeliveryOrder(Integer user_id) {
         ArrayList<DeliverOrder> arrayList = null;
         Optional<List<DeliverOrder>> pseudoList = DeliveryOrderDAO.getAllDeliveryOrdersByIdUser(user_id);
-        if (pseudoList.isEmpty()) {
+        if (!pseudoList.isPresent()) {
             return null;
         } else {
             arrayList = (ArrayList<DeliverOrder>) pseudoList.get();

@@ -7,9 +7,9 @@ import java.sql.SQLException;
 
 public class ConnectionJDBC {
     private static Connection connection;
-    private static final String URL_ADDRESS = "jdbc:mysql://localhost:3306/restaurant_db?serverTimezone=Europe/Moscow";
+    private static final String URL_ADDRESS = "jdbc:mysql://localhost:3306/project1?serverTimezone=Europe/Moscow";
     private static final String USER = "root";
-    private static final String PASSWORD = "ifrehjdlbyfh";
+    private static final String PASSWORD = "password";
 
 
     public static Connection getConnection() {

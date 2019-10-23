@@ -42,6 +42,20 @@
         <input type="password" id="inputPassword" class="form-control" placeholder="пароль" required="a">
         <br>
 
+
+        <div class="form-row align-items-center">
+            <div class="col-auto my-1">
+                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                    <option selected>Выбрать</option>
+                    <option value="1">Администратор</option>
+                    <option value="2">ОФициант</option>
+                    <option value="3">Повар</option>
+                </select>
+            </div>
+        </div>
+        <br>
+
         <button class="btn btn-lg btn-success btn-block" type="submit">Отправить</button>
     </form>
 
