@@ -12,7 +12,7 @@ import java.io.IOException;
 @WebServlet("/registration")
 public class RegistrServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (Registration.registrUser(request.getParameter("phoneNumber"), request.getParameter("username"), request.getParameter("login"), request.getParameter("password"), request.getParameter("address"))) {
+        if (Registration.registerUser(request.getParameter("phoneNumber"), request.getParameter("username"), request.getParameter("login"), request.getParameter("password"), request.getParameter("address"))) {
             request.setAttribute("registrStatus", "Регистрация прошла успешна");
         } else{
             request.setAttribute("registrStatus", "Ошибка, попробуйте заново");

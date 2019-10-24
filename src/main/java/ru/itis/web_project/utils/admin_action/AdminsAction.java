@@ -5,6 +5,7 @@ import ru.itis.web_project.DAO.UserDAO;
 import ru.itis.web_project.models.User;
 import ru.itis.web_project.utils.HashPassword;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public class AdminsAction {
@@ -22,5 +23,10 @@ public class AdminsAction {
     public static List<User> getAllUsers() {
         List<User> users = UserDAO.getAllUsers().get();
         return users;
+    }
+
+    public static void deleteUser(HttpServletRequest request) {
+        Integer deletedId = Integer.parseInt(request.getParameter("deleted_id"));
+        UserDAO.deleteUserById(deletedId);
     }
 }

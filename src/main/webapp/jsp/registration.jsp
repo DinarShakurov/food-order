@@ -34,7 +34,7 @@
                autofocus="">
         <br>
 
-        <label for="inputAddress" class="sr-only">Номер</label>
+        <label for="inputAddress" class="sr-only">Адрес</label>
         <input name="address" type="text" id="inputAddress" class="form-control" placeholder="адрес" required=""
                autofocus="">
         <br>

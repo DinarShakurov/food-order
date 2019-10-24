@@ -1,4 +1,4 @@
-package ru.itis.web_project.servlets;
+package ru.itis.web_project.servlets.admin;
 
 import ru.itis.web_project.utils.admin_action.AdminsAction;
 
@@ -12,7 +12,8 @@ import java.io.IOException;
 @WebServlet("/profile/admin/all-users")
 public class TableOfUsersServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        AdminsAction.deleteUser(request);
+        response.sendRedirect("/profile/admin/all-users");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

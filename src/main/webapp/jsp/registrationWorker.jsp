@@ -12,45 +12,52 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
 <body>
 <%@ include file="header.jsp" %>
 
 <div class="container">
-    <form class="form-signin" method="post" action="/registration">
+    <form class="form-signin" method="post" action="/profile/admin/create-user">
         <%--ЕСЛИ БЫЛА ПОПЫТКА зарегестрироваться, выводит успешна ли она или нет--%>
+
+
         <c:out value="${registrStatus}"/>
 
         <h2 class="form-signin-heading">Регистрация</h2>
         <br>
 
         <label for="inputName" class="sr-only">Имя</label>
-        <input type="text" id="inputName" class="form-control" placeholder="имя" required="" autofocus="">
+        <input name="username" type="text" id="inputName" class="form-control" placeholder="имя" required="" autofocus="">
         <br>
 
         <label for="inputNumber" class="sr-only">Номер</label>
-        <input type="number" id="inputNumber" class="form-control" placeholder="номер телефона" required=""
+        <input name="phoneNumber" type="number" id="inputNumber" class="form-control" placeholder="номер телефона" required=""
+               autofocus="">
+        <br>
+
+        <label for="inputAddress" class="sr-only">Адрес</label>
+        <input name="address" type="text" id="inputAddress" class="form-control" placeholder="адрес" required=""
                autofocus="">
         <br>
 
         <label for="inputEmail" class="sr-only">Почта</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="email" required="" autofocus="">
+        <input name="login" type="email" id="inputEmail" class="form-control" placeholder="email" required="" autofocus="">
         <br>
 
         <label for="inputPassword" class="sr-only">Пароль</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="пароль" required="a">
+        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="пароль" required="a">
         <br>
 
 
         <div class="form-row align-items-center">
             <div class="col-auto my-1">
                 <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <select name="role" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                     <option selected>Выбрать</option>
-                    <option value="1">Администратор</option>
-                    <option value="2">ОФициант</option>
-                    <option value="3">Повар</option>
+                    <option value="Admin">Администратор</option>
+                    <option value="Waiter">ОФициант</option>
+                    <option value="Kitchen">Повар</option>
                 </select>
             </div>
         </div>

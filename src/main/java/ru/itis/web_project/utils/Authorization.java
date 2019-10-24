@@ -15,7 +15,7 @@ public class Authorization {
 
         Optional<User> user = UserDAO.findUserByLoginAndPassword(request.getParameter("login"), HashPassword.getHash(request.getParameter("password")));
 
-        if (!user.isPresent()) {
+        if (user.isEmpty()) {
             return false;
         } else {
             setAttributesForSession(request, user);
@@ -30,7 +30,7 @@ public class Authorization {
 
     public static boolean giveAccess(Integer userId, HttpServletRequest request, HttpServletResponse response) {
         Optional<User> user = UserDAO.findUserById(userId);
-        if (!user.isPresent()) {
+        if (user.isEmpty()) {
             return false;
         } else {
             setAttributesForSession(request, user);

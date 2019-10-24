@@ -29,27 +29,31 @@
         <th>Register date</th>
         <th>Role</th>
         <th></th>
+
     </tr>
     </thead>
     <tbody>
-    <form>
+    <form method="post" action="/profile/admin/all-users">
         <c:set var="i" value="${1}"/>
         <c:forEach var="user" items="${userList}">
             <tr>
                 <td><c:out value="${i}"/></td>
                 <td>
                         <c:out value="${user.login}"/>
-                <td>
+                </td>
                 <td><c:out value="${user.name}"/></td>
                 <td><c:out value="${user.phone_number}"/></td>
                 <td><c:out value="${user.address}"/></td>
                 <td><c:out value="${user.date}"/></td>
                 <td><c:out value="${user.role}"/></td>
+
                 <c:if test="${user.role != 2 && sessionScope.user.id!=user.id}">
                     <td>
-                        <button type="submit" class="btn btn-sm btn-outline-danger">Удалить</button>
+                        <button name="deleteUser" value="delete" type="submit" class="btn btn-sm btn-outline-danger">Удалить</button>
                     </td>
+                    <td><input type="hidden" name="deleted_id" value="${user.id}"></td>
                 </c:if>
+
             </tr>
         </c:forEach>
     </form>
@@ -57,7 +61,7 @@
     </tbody>
     <tfoot>
     <tr>
-        <form method="post" action="/basket">
+        <form method="get" action="/profile/admin/create-user">
             <td></td>
             <td></td>
             <td></td>
