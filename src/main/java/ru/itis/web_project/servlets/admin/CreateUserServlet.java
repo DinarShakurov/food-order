@@ -14,9 +14,11 @@ import java.io.IOException;
 public class CreateUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (Registration.registerWorker(request)) {
+            request.setAttribute("registrCode", true);
             request.setAttribute("registrStatus", "Работник был зарегестрирован");
         } else {
             request.setAttribute("registrStatus", "Работник не был зарегестрирован");
+            request.setAttribute("registrCode", false);
         }
         request.getRequestDispatcher("/jsp/registrationWorker.jsp").forward(request, response);
     }
