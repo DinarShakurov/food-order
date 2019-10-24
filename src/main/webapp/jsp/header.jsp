@@ -53,7 +53,7 @@
                                 <a class="dropdown-item" href="#">Администрирование меню</a> <%--ADMIN--%>
                             </c:if>
                             <c:if test="${accessId == 1}">
-                                <a class="dropdown-item" href="#">Клиенты/работники</a> <%--ADMIN--%>
+                                <a class="dropdown-item" href="/profile/admin/all-users">Клиенты/работники</a> <%--ADMIN--%>
                             </c:if>
                             <c:if test="${accessId == 1 || accessId == 4}">
                                 <a class="dropdown-item" href="#">Посмотреть заказы</a> <%--ADMIN, KITCHEN--%>

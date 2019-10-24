@@ -11,7 +11,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Users</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <%@ include file="header.jsp" %>
@@ -33,18 +33,25 @@
     </thead>
     <tbody>
     <form>
-        <tr>
-            <td>1</td>
-            <td>login</td>
-            <td>name</td>
-            <td>1234</td>
-            <td>Kanzas</td>
-            <td>12.03.2313</td>
-            <td>user</td>
-            <td>
-                <button type="submit" class="btn btn-sm btn-outline-danger">Удалить</button>
-            </td>
-        </tr>
+        <c:set var="i" value="${1}"/>
+        <c:forEach var="user" items="${userList}">
+            <tr>
+                <td><c:out value="${i}"/></td>
+                <td>
+                        <c:out value="${user.login}"/>
+                <td>
+                <td><c:out value="${user.name}"/></td>
+                <td><c:out value="${user.phone_number}"/></td>
+                <td><c:out value="${user.address}"/></td>
+                <td><c:out value="${user.date}"/></td>
+                <td><c:out value="${user.role}"/></td>
+                <c:if test="${user.role != 2 && sessionScope.user.id!=user.id}">
+                    <td>
+                        <button type="submit" class="btn btn-sm btn-outline-danger">Удалить</button>
+                    </td>
+                </c:if>
+            </tr>
+        </c:forEach>
     </form>
 
     </tbody>

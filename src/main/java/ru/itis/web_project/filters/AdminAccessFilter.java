@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName = "AdminAccessFilter")
+@WebFilter(urlPatterns = {"/profile/admin/all-users"})
 public class AdminAccessFilter implements Filter {
     public void destroy() {
     }

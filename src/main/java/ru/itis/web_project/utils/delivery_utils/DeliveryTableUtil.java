@@ -11,18 +11,18 @@ import java.util.Optional;
 
 public class DeliveryTableUtil {
 
-    public static List<ru.itis.web_project.utils.delivery_utils.TableObject> getTableDeliveryOrder(Integer user_id) {
+    public static List<TableObjectModel> getTableDeliveryOrder(Integer user_id) {
         ArrayList<DeliverOrder> arrayList = null;
         Optional<List<DeliverOrder>> pseudoList = DeliveryOrderDAO.getAllDeliveryOrdersByIdUser(user_id);
-        if (!pseudoList.isPresent()) {
+        if (pseudoList.isEmpty()) {
             return null;
         } else {
             arrayList = (ArrayList<DeliverOrder>) pseudoList.get();
-            List<ru.itis.web_project.utils.delivery_utils.TableObject> newList = new ArrayList<>();
+            List<TableObjectModel> newList = new ArrayList<>();
 
             for (DeliverOrder delivery : arrayList) {
                 Dish dish = DishDAO.getDishById(delivery.getId_menu()).get();
-                TableObject tableObject = new TableObject();
+                TableObjectModel tableObject = new TableObjectModel();
                 tableObject.setCount_id_menu(delivery.getCount_id_menu());
                 tableObject.setDate(delivery.getDate());
                 tableObject.setName_dish(dish.getName());

@@ -2,7 +2,7 @@ package ru.itis.web_project.utils.delivery_utils;
 
 import java.sql.Date;
 
-public class TableObject {
+public class TableObjectModel {
     private String name_dish;
     private Integer count_id_menu;
     private Integer price;
