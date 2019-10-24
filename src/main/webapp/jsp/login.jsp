@@ -45,7 +45,7 @@
         </div>
 
         <c:if test="${loginStatus != null}">
-            <div class="alert alert-danger login" role="alert">
+            <div class="alert alert-danger loginStatus" role="alert">
                 <c:out value="${loginStatus}"/>
             </div>
         </c:if>
