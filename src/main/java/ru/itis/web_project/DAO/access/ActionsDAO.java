@@ -37,4 +37,17 @@ public class ActionsDAO {
         }
         return null;
     }
+
+    public static Integer getActionIDbyAction(String action) {
+        String sqlQuery = "SELECT id FROM actions WHERE action = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
+            ps.setString(1, action);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) return rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

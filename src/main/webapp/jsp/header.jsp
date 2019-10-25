@@ -1,5 +1,7 @@
+<%@ page import="java.util.List" %>
+<%@ page import="ru.itis.web_project.utils.permissions.RolesUtil" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<c:set var="accessId" value="${sessionScope.user.role}"/>
+<%--<c:set var="accessId" value="${sessionScope.user.role}"/>--%>
 <header>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
         <a class="navbar-brand" href="/main">Restaurant</a>
@@ -27,45 +29,59 @@
 
             </ul>
             <ul class="navbar-nav ml-auto">
-                <c:if test="${accessId == null}">
+                <%--<c:if test="${accessId == null}">--%>
+                <% HttpSession httpSession = request.getSession(false);
+                    List<Integer> permissionList = (List<Integer>) httpSession.getAttribute("permissionList");
+                    if (permissionList == null) {
+                %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/registration">Зарегестрироваться</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Войти</a>
+                </li>
+                <%} else {%>
+                <%--</c:if>--%>
+                <%--<c:if test="${accessId != null}">--%>
+                <li class="nav-justified dropleft justify-content-end">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <c:out value="${sessionScope.user.name}"/>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/registration">Зарегестрироваться</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Войти</a>
-                    </li>
-                </c:if>
-                <c:if test="${accessId != null}">
-                    <li class="nav-justified dropleft justify-content-end">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <c:out value="${sessionScope.user.name}"/>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/profile">Профиль</a> <%--ALL--%>
 
-                            <a class="dropdown-item" href="/profile">Профиль</a> <%--ALL--%>
+                        <%--<c:if test="${accessId == 2}">--%>
+                        <%if (RolesUtil.haveAccess("checkBasket", permissionList)) {%>
+                        <a class="dropdown-item" href="/profile/basket">Корзина</a> <%--USER--%>
+                        <%}%>
+                        <%--</c:if>--%>
+                        <%--<c:if test="${accessId == 1}">--%>
+                        <%if (RolesUtil.haveAccess("addDishToMenu", permissionList)) {%>
+                        <a class="dropdown-item" href="#">Администрирование меню</a> <%--ADMIN--%>
+                        <%}%>
+                        <%--</c:if>--%>
+                        <%--c:if test="${accessId == 1}">--%>
+                        <%if (RolesUtil.haveAccess("showUsers", permissionList)) {%>
+                        <a class="dropdown-item" href="/profile/admin/all-users">Клиенты/работники</a> <%--ADMIN--%>
+                        <%}%>
+                        <%--/c:if>--%>
+                        <%--<c:if test="${accessId == 1 || accessId == 4}">--%>
+                        <%if (RolesUtil.haveAccess("showOrders", permissionList)) {%>
+                        <a class="dropdown-item" href="#">Посмотреть заказы</a> <%--ADMIN, KITCHEN--%>
+                        <%}%>
 
-                            <c:if test="${accessId == 2}">
-                                <a class="dropdown-item" href="/profile/basket">Корзина</a> <%--USER--%>
-                            </c:if>
-                            <c:if test="${accessId == 1}">
-                                <a class="dropdown-item" href="#">Администрирование меню</a> <%--ADMIN--%>
-                            </c:if>
-                            <c:if test="${accessId == 1}">
-                                <a class="dropdown-item" href="/profile/admin/all-users">Клиенты/работники</a> <%--ADMIN--%>
-                            </c:if>
-                            <c:if test="${accessId == 1 || accessId == 4}">
-                                <a class="dropdown-item" href="#">Посмотреть заказы</a> <%--ADMIN, KITCHEN--%>
-                            </c:if>
-                            <%--<c:if test="${accessId == 1 || accessId == 3}">
-                                <a class="dropdown-item" href="#">Посмотреть столы </a> &lt;%&ndash;ADMIN, WAITER&ndash;%&gt;
-                            </c:if>--%>
-                            <hr>
-                            <a class="dropdown-item" href="/exit">Выйти</a> <%--ALL--%>
-                        </div>
-                    </li>
-                </c:if>
+                        <%--</c:if>--%>
+                        <%--<c:if test="${accessId == 1 || accessId == 3}">
+                            <a class="dropdown-item" href="#">Посмотреть столы </a> &lt;%&ndash;ADMIN, WAITER&ndash;%&gt;
+                        </c:if>--%>
+                        <hr>
+                        <a class="dropdown-item" href="/exit">Выйти</a> <%--ALL--%>
+                    </div>
+                </li>
+                <%--</c:if>--%>
+                <%}%>
             </ul>
         </div>
     </nav>
