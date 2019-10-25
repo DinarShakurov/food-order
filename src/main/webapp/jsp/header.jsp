@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <c:set var="accessId" value="${sessionScope.user.role}"/>
 <header>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
@@ -53,7 +54,8 @@
                                 <a class="dropdown-item" href="#">Администрирование меню</a> <%--ADMIN--%>
                             </c:if>
                             <c:if test="${accessId == 1}">
-                                <a class="dropdown-item" href="/profile/admin/all-users">Клиенты/работники</a> <%--ADMIN--%>
+                                <a class="dropdown-item"
+                                   href="/profile/admin/all-users">Клиенты/работники</a> <%--ADMIN--%>
                             </c:if>
                             <c:if test="${accessId == 1 || accessId == 4}">
                                 <a class="dropdown-item" href="#">Посмотреть заказы</a> <%--ADMIN, KITCHEN--%>

@@ -1,9 +1,9 @@
-.menu{
+.menu {
     text-align: center;
     margin-top: 10%;
 }
 
-body{
+body {
     background-size: 100%;
     -webkit-background-size: 100%;
     background-image: url("../image/bg1.jpg");
@@ -11,11 +11,11 @@ body{
     color: white;
 }
 
-.card{
+.card {
     color: black;
 }
 
-.alert{
+.alert {
     margin-left: auto;
     margin-right: auto;
     width: 30%;
