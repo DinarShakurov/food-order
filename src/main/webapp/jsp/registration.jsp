@@ -43,7 +43,7 @@
 
         <label for="inputPassword" class="sr-only">Пароль</label>
         <input name="password" type="password" id="inputPassword" class="form-control" placeholder="пароль"
-               required="a">
+               required="">
         <br>
 
         <button class="btn btn-lg btn-success btn-block" type="submit">Отправить</button>
