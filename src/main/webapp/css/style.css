@@ -27,7 +27,7 @@ body{
     color: white;
 }
 
-.basketStatus{
+.basket{
     margin-left: auto;
     margin-right: auto;
     width: 30%;
@@ -35,7 +35,7 @@ body{
     font-size: 20px;
 }
 
-.loginStatus{
+.login{
     margin-left: auto;
     margin-right: auto;
     text-align: center;

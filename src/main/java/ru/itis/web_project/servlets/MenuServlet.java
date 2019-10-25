@@ -1,7 +1,7 @@
 package ru.itis.web_project.servlets;
 
-import ru.itis.web_project.utils.AddingDishes;
-import ru.itis.web_project.utils.EditMenu;
+import ru.itis.web_project.utils.user_action.AddingDishes;
+import ru.itis.web_project.utils.admin_action.EditMenu;
 import ru.itis.web_project.utils.MenuUtil;
 
 import javax.servlet.ServletException;

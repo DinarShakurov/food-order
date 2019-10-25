@@ -58,9 +58,9 @@
                             <c:if test="${accessId == 1 || accessId == 4}">
                                 <a class="dropdown-item" href="#">Посмотреть заказы</a> <%--ADMIN, KITCHEN--%>
                             </c:if>
-                            <c:if test="${accessId == 1 || accessId == 3}">
-                                <a class="dropdown-item" href="#">Посмотреть столы </a> <%--ADMIN, WAITER--%>
-                            </c:if>
+                            <%--<c:if test="${accessId == 1 || accessId == 3}">
+                                <a class="dropdown-item" href="#">Посмотреть столы </a> &lt;%&ndash;ADMIN, WAITER&ndash;%&gt;
+                            </c:if>--%>
                             <hr>
                             <a class="dropdown-item" href="/exit">Выйти</a> <%--ALL--%>
                         </div>

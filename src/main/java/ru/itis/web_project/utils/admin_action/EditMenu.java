@@ -1,4 +1,4 @@
-package ru.itis.web_project.utils;
+package ru.itis.web_project.utils.admin_action;
 
 import ru.itis.web_project.DAO.DishDAO;
 

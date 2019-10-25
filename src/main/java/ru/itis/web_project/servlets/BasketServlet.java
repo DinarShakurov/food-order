@@ -1,6 +1,6 @@
 package ru.itis.web_project.servlets;
 
-import ru.itis.web_project.utils.AddingDishes;
+import ru.itis.web_project.utils.user_action.AddingDishes;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,10 +16,12 @@ public class BasketServlet extends HttpServlet {
             AddingDishes.deleteDishFromBasket(request);
         } else {
             if (request.getSession(false).getAttribute("orderDeliveryList") != null) {
+
+                //TODO сделать бизнес логику, реквест не должен передаваться в качестве параметра, и переделать таблицу пермишенов
                 AddingDishes.buyFromBasket(request);
                 request.setAttribute("buyStatus", "Заказ был добавлен");
             } else {
-                request.setAttribute("buyStatus", "Нечего заказывать, додик");
+                request.setAttribute("buyStatus", "Список пуст");
             }
         }
         request.getRequestDispatcher("/jsp/basket.jsp").forward(request, response);

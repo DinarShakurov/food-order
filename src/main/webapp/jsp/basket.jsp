@@ -70,7 +70,7 @@
 </table>
 
 <c:if test="${buyStatus != null}">
-    <div class="alert alert-success basketStatus" role="alert">
+    <div class="alert alert-success basket" role="alert">
         <c:out value="${buyStatus}"/>
     </div>
 </c:if>
