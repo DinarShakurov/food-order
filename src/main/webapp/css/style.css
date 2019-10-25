@@ -16,10 +16,10 @@
     max-width: 80%;
     border-radius: 0.5rem;
     background: white;
-            /*-webkit-linear-gradient(left, #000000, #6c757d);*/
+    /*-webkit-linear-gradient(left, #000000, #6c757d);*/
 }
 
-body{
+body {
     background-image: url("/image/bg3.jpg");
     background-size: 100%;
     -webkit-background-size: 100%;
@@ -27,7 +27,7 @@ body{
     color: white;
 }
 
-.basket{
+.basket {
     margin-left: auto;
     margin-right: auto;
     width: 30%;
@@ -35,7 +35,7 @@ body{
     font-size: 20px;
 }
 
-.login{
+.login {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
