@@ -1,3 +1,5 @@
+<%@ page import="ru.itis.web_project.models.User" %>
+<%@ page import="ru.itis.web_project.utils.RoleUtil" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ru">
@@ -15,7 +17,7 @@
     <tr>
     </tr>
     <tr>
-        <th>Id</th>
+        <th>#</th>
         <th>Login</th>
         <th>Username</th>
         <th>Phone number</th>
@@ -28,30 +30,45 @@
     </thead>
     <tbody>
     <form method="post" action="/profile/admin/all-users">
-        <c:set var="i" value="${1}"/>
-        <c:forEach var="user" items="${userList}">
-            <tr>
-                <td><c:out value="${i}"/></td>
-                <td>
-                    <c:out value="${user.login}"/>
-                </td>
-                <td><c:out value="${user.name}"/></td>
-                <td><c:out value="${user.phone_number}"/></td>
-                <td><c:out value="${user.address}"/></td>
-                <td><c:out value="${user.date}"/></td>
-                <td><c:out value="${user.role}"/></td>
+        <%--<c:set var="i" value="${1}"/>
+        <c:forEach var="user" items="${userList}">--%>
+        <%
+            List<User> usersList = (List<User>) request.getAttribute("userList");
 
-                <c:if test="${user.role != 2 && sessionScope.user.id!=user.id}">
-                    <td>
-                        <button name="deleteUser" value="delete" type="submit" class="btn btn-sm btn-outline-danger">
-                            Удалить
-                        </button>
-                    </td>
-                    <td><input type="hidden" name="deleted_id" value="${user.id}"></td>
-                </c:if>
+            int i = 1;
+            for (User user : usersList) {
 
-            </tr>
-        </c:forEach>
+        %>
+        <tr>
+            <td><%--<c:out value="${i}"/>--%><%=i++%></td>
+            <td>
+                <%--<c:out value="${user.login}"/>--%>
+                <%=user.getLogin()%>
+            </td>
+            <td><%--<c:out value="${user.name}"/> --%><%=user.getName()%></td>
+            <td><%--<c:out value="${user.phone_number}"/>--%><%=user.getPhone_number()%></td>
+            <td><%--<c:out value="${user.address}"/>--%><%=user.getAddress()%></td>
+            <td><%--<c:out value="${user.date}"/>--%><%=user.getDate()%></td>
+            <td><%--<c:out value="${user.role}"/>--%><%=RoleUtil.getRoleNameByID(user.getRole())%></td>
+            <td>
+
+            </td>
+            <%-- <c:if test="${user.role != 2 && sessionScope.user.id!=user.id}">--%>
+            <%if (user.getRole() != 2 && user.getId() != ((User) httpSession.getAttribute("user")).getId()) {%>
+            <td>
+                <button name="deleteUser" value="delete" type="submit" class="btn btn-sm btn-outline-danger">
+                    Удалить
+                </button>
+            </td>
+            <td><input type="hidden" name="deleted_id" value="${user.id}"></td>
+            <%}%>
+            <%--</c:if>--%>
+
+        </tr>
+        <%
+            }
+        %>
+        <%--</c:forEach>--%>
     </form>
 
     </tbody>

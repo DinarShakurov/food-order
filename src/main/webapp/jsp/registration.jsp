@@ -2,8 +2,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ru">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <%@include file="BootstrapConnection.jsp" %>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Registration</title>
     <link rel="stylesheet" href="/css/style.css" type="text/css">
@@ -14,8 +18,9 @@
 <div class="container">
     <form class="form-signin" method="post" action="/registration">
         <%--ЕСЛИ БЫЛА ПОПЫТКА зарегестрироваться, выводит успешна ли она или нет--%>
-        <c:out value="${registrStatus}"/>
-
+        <c:if test="${registrStatus!=null}">
+            <c:out value="${registrStatus}"/>
+        </c:if>
 
         <h2 class="form-signin-heading">Регистрация</h2>
         <br>

@@ -5,7 +5,7 @@ import ru.itis.web_project.DAO.access.PermissionDAO;
 
 import java.util.List;
 
-public class RolesUtil {
+public class PermissionUtil {
     public static List<Integer> setPermissionForUser(Integer id_role) {
         return PermissionDAO.getActionsByRoleId(id_role).orElse(null);
     }
@@ -24,9 +24,12 @@ public class RolesUtil {
 
     public static boolean haveAccess(String action, List<Integer> permissionList) {
         Integer actionId = ActionsDAO.getActionIDbyAction(action);
-        for (Integer i : permissionList) {
-            if (actionId == i) return true;
+        if (permissionList != null) {
+            for (Integer i : permissionList) {
+                if (actionId == i) return true;
+            }
         }
         return false;
     }
+
 }

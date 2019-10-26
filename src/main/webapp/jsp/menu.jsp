@@ -1,3 +1,4 @@
+<%@ page import="ru.itis.web_project.utils.permissions.PermissionUtil" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="ru">
@@ -37,30 +38,30 @@
                                     <br>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small class="text-muted">цена: ${dish.price}</small>
-
                                         <div>
-                                            <c:if test="${accessId == 2}">
-                                                <input name="id_count_menu" type="number" min="1" max="10" step="1"
-                                                       value="1"
-                                                       pattern="[0-9]*">
-                                            </c:if>
+                                            <% if (permissionList != null && PermissionUtil.haveAccess("addToBasket", permissionList)) {%>
+                                            <input name="id_count_menu" type="number" min="1" max="10" step="1"
+                                                   value="1"
+                                                   pattern="[0-9]*">
+                                            <%}%>
+
                                             <input name="id_menu" value="${dish.id}" type="hidden">
                                         </div>
 
                                         <br>
                                         <div class="btn-group">
-                                            <c:if test="${accessId == 2}">
-                                                <button name="add" value="add" type="submit"
-                                                        class="btn btn-sm btn-outline-success">
-                                                    Добавить
-                                                </button>
-                                            </c:if>
-                                            <c:if test="${accessId == 1}">
-                                                <button name="delete" value="delete" type="submit"
-                                                        class="btn btn-sm btn-outline-danger">
-                                                    Удалить
-                                                </button>
-                                            </c:if>
+                                            <% if (permissionList != null && PermissionUtil.haveAccess("addToBasket", permissionList)) {%>
+                                            <button name="add" value="add" type="submit"
+                                                    class="btn btn-sm btn-outline-success">
+                                                Добавить
+                                            </button>
+                                            <%}%>
+                                            <% if (permissionList != null && PermissionUtil.haveAccess("removeDishFromMenu", permissionList)) {%>
+                                            <button name="delete" value="delete" type="submit"
+                                                    class="btn btn-sm btn-outline-danger">
+                                                Удалить
+                                            </button>
+                                            <%}%>
                                         </div>
                                     </div>
                                 </div>
@@ -70,12 +71,14 @@
                 </form>
             </c:forEach>
         </div>
-        <c:if test="${accessId == 1}">
+        <% if (permissionList != null && PermissionUtil.haveAccess("addDishToMenu", permissionList)) {%>
+        <form method="get" action="/menu/add-dish">
             <button name="addDish" value="addDish" type="submit"
                     class="btn btn-lg btn-success">
                 Добавить блюдо
             </button>
-        </c:if>
+        </form>
+        <%}%>
     </div>
 </div>
 

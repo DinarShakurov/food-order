@@ -1,5 +1,6 @@
 package ru.itis.web_project.utils;
 
+import ru.itis.web_project.DAO.DishCategoryDAO;
 import ru.itis.web_project.DAO.DishDAO;
 import ru.itis.web_project.models.Dish;
 
@@ -14,5 +15,9 @@ public class MenuUtil {
             List<Dish> list = listOptional.get();
             request.setAttribute("menuList", list);
         }
+    }
+
+    public static List<String> getCategoryList(){
+        return DishCategoryDAO.getAllCategories();
     }
 }

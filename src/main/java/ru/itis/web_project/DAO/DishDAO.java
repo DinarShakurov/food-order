@@ -14,7 +14,7 @@ import java.util.Optional;
 public class DishDAO {
     private static final Connection connection = ConnectionJDBC.getConnection();
 
-    public static void insert(Dish dish) {
+    public static boolean insert(Dish dish) {
         String sqlQuery = "INSERT INTO menu (name_dish, price, composition,id_category) VALUES (?,?,?,?)";
         try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
             ps.setString(1, dish.getName());
@@ -22,9 +22,11 @@ public class DishDAO {
             ps.setString(3, dish.getComposition());
             ps.setInt(4, dish.getId_category());
             ps.execute();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     public static Optional<List<Dish>> getAllDishes() {

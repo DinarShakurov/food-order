@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/profile/basket"})
+@WebFilter(urlPatterns = {"/profile/user/basket"})
 public class UserAccessFilter implements Filter {
     public void destroy() {
     }
@@ -19,7 +19,6 @@ public class UserAccessFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpSession session = request.getSession(false);
         Integer accessId = ((User) session.getAttribute("user")).getRole();
-
         if (accessId == 2) {
             chain.doFilter(req, resp);
         } else {

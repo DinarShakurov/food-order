@@ -1,3 +1,4 @@
+<%@ page import="ru.itis.web_project.utils.RoleUtil" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ru">
@@ -63,9 +64,19 @@
                 <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
                 <select name="role" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                     <option selected>Выбрать</option>
-                    <option value="Admin">Администратор</option>
-                    <option value="Waiter">ОФициант</option>
-                    <option value="Kitchen">Повар</option>
+                    <%
+                        List<String> list = RoleUtil.getRoleNames();
+                        if (list != null) {
+                            for (String str : list) {
+                                if (!str.equals("Пользователь")) {
+                    %>
+                    <option value="<%=str%>"><%=str%></option>
+                    <%
+                                }
+                            }
+                        }
+                    %>
+
                 </select>
             </div>
         </div>

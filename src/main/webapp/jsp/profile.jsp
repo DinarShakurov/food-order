@@ -34,16 +34,20 @@
                 </h6>
                 <h6><c:out value="${changePasswordStatus}"/></h6>
                 <h6><c:out value="${changeMainInfoStatus}"/></h6>
+<%--
                 <p class="proile-rating">Ваши бонусы: <span>2000</span></p>
+--%>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
                            aria-controls="home" aria-selected="true">Обо мне</a>
                     </li>
+                    <% if (PermissionUtil.haveAccess("checkHistory", permissionList)) {%>
                     <li class="nav-item">
                         <a class="nav-link" id="history-tab" data-toggle="tab" href="#history" role="tab"
                            aria-controls="history" aria-selected="false">История</a>
                     </li>
+                    <%}%>
                     <li class="nav-item">
                         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
                            aria-controls="profile" aria-selected="false">Редактировать</a>
