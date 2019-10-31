@@ -12,6 +12,7 @@ import java.io.IOException;
 @WebServlet("/menu/add-dish")
 public class AddDishServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         if (EditMenu.addToMenu(request.getParameter("name_dish"), Integer.parseInt(request.getParameter("price")), request.getParameter("composition"), request.getParameter("category"))) {
             request.setAttribute("addingStatus", "Блюдо добавлено в меню");
         } else {

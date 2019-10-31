@@ -14,7 +14,7 @@ import java.util.List;
 @WebServlet("/profile/admin/all-users")
 public class TableOfUsersServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        AdminsAction.deleteUser(request);
+        AdminsAction.deleteUser(request.getParameter("deleted_id"));
         response.sendRedirect("/profile/admin/all-users");
     }
 

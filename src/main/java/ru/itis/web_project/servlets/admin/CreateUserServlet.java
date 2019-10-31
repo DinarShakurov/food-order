@@ -13,6 +13,7 @@ import java.io.IOException;
 @WebServlet("/profile/admin/create-user")
 public class CreateUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         if (Registration.registerWorker(request)) {
             request.setAttribute("registrCode", true);
             request.setAttribute("registrStatus", "Работник был зарегестрирован");

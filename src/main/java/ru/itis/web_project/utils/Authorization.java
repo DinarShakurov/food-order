@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 public class Authorization {
+    private UserDAO userDAO;
+
 
     public static boolean isItCorrect(HttpServletRequest request, HttpServletResponse response) {
 

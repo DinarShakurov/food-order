@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="ru.itis.web_project.utils.permissions.PermissionUtil" %>
 
 <html lang="ru">
 <head>
@@ -186,7 +187,7 @@
                                 <td>${orders.name_dish}</td>
                                 <td>${orders.count_id_menu}</td>
                                 <td>${orders.price}</td>
-                                <td>${orders.date}</td>
+                                <td>${orders.stringDate}</td>
                             </tr>
                             <c:set var="i" scope="page" value="${i+1}"/>
                         </c:forEach>

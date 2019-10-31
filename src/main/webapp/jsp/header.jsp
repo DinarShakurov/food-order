@@ -23,7 +23,7 @@
                     <a class="nav-link" href="#">Акция</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Отзывы</a>
+                    <a class="nav-link" href="/reviews">Отзывы</a>
                 </li>
 
             </ul>

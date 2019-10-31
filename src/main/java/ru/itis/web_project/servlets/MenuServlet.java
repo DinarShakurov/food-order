@@ -14,6 +14,7 @@ import java.io.IOException;
 @WebServlet("/menu")
 public class MenuServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         if (request.getParameter("add") != null) {
             request.setAttribute("addingStatus", "Блюдо добавлено в ваш заказ");
             AddingDishes.toBasket(request);

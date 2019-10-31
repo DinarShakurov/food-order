@@ -11,23 +11,32 @@
 <body>
 <%@ include file="header.jsp" %>
 
+<%
+    if (permissionList != null && PermissionUtil.haveAccess("makeReview", permissionList)) {
+%>
 <table class="table basket">
     <tbody>
     <tr>
-        <form>
-            <td><input name="text" type="number" id="inputMark" class="form-control" placeholder="оценка" required=""
-                       min="1" max="10" step="1" autofocus=""></td>
+        <form action="/reviews" method="post">
             <td>
-                <input name="text" type="text" id="inputText" class="form-control" placeholder="отзыв" required=""
+                <input name="mark" type="number" id="inputMark" class="form-control" placeholder="оценка" required=""
+                       min="1" max="5" step="1" autofocus="">
+            </td>
+            <td>
+                <input name="review" type="text" id="inputText" class="form-control" placeholder="отзыв" required=""
                        autofocus=""></td>
             <td>
-                <button type="submit" class="btn btn-sm btn-success">Добавить отзыв
+                <button name="addReview" value="addReview" type="submit" class="btn btn-sm btn-success">
+                    Добавить отзыв
                 </button>
             </td>
         </form>
     </tr>
     </tbody>
 </table>
+<%
+    }
+%>
 
 <table class="table basket">
     <thead>
@@ -35,15 +44,40 @@
         <th>Имя пользователя</th>
         <th>Отзыв</th>
         <th>Оценка</th>
+        <th>Дата</th>
     </tr>
     </thead>
     <tbody>
+    <%--    <%--%>
+    <%--        for (int i = 0; i <; i++) {--%>
+    <%--    %>--%>
 
-    <tr>
-        <td>Имя</td>
-        <td>Это самый лучший ресторан</td>
-        <td>5</td>
-    </tr>
+    <c:forEach items="${requestScope.reviewList}" var="review">
+        <tr>
+            <td> ${review.username}</td>
+            <td> ${review.message}</td>
+            <td> ${review.raiting}</td>
+            <td>
+                    ${review.stringDate}
+            </td>
+            <%
+                if (PermissionUtil.haveAccess("deleteReviews", permissionList)) {
+            %>
+            <form action="/reviews" method="post">
+                <td>
+                    <button name="deleteReview" value="${review.id}" type="submit" class="btn btn-sm btn-outline-danger">
+                        Удалить отзыв
+                    </button>
+                </td>
+            </form>
+            <%
+                }
+            %>
+        </tr>
+    </c:forEach>
+    <%--    <%--%>
+    <%--        }--%>
+    <%--    %>--%>
 
 
     </tbody>
@@ -64,7 +98,9 @@
     <%--</tfoot>--%>
 
 </table>
-
+<div>
+    Средний рейтинг: <c:out value="${requestScope.reviewRating}"/>
+</div>
 <%@include file="BootstrapScripts.jsp" %>
 </body>
 </html>

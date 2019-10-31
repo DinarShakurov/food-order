@@ -25,8 +25,8 @@ public class AdminsAction {
         return users;
     }
 
-    public static void deleteUser(HttpServletRequest request) {
-        Integer deletedId = Integer.parseInt(request.getParameter("deleted_id"));
+    public static void deleteUser(String deleted_id) {
+        Integer deletedId = Integer.parseInt(deleted_id);
         UserDAO.deleteUserById(deletedId);
     }
 }

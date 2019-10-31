@@ -4,6 +4,7 @@ import ru.itis.web_project.models.User;
 import ru.itis.web_project.utils.delivery_utils.DeliveryTableUtil;
 import ru.itis.web_project.utils.EditProfile;
 
+import javax.servlet.ServletContextListener;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +15,7 @@ import java.io.IOException;
 @WebServlet("/profile")
 public class ProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String oldPassword = request.getParameter("oldPassword");
         if (oldPassword != null) {
             if (EditProfile.editPassword(request)) {

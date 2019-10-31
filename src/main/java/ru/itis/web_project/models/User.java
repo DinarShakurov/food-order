@@ -11,6 +11,7 @@ public class User {
     private Date date;
     private String phone_number;
     private String address;
+    private String stringDate;
 
     public String getPhone_number() {
         return phone_number;
@@ -72,7 +73,22 @@ public class User {
         return date;
     }
 
+
+    public String getStringDate() {
+        return stringDate;
+    }
+
     public void setDate(Date date) {
+        this.stringDate = "";
+        String[] str = date.toString().split("-");
+
+        for (int i = str.length - 1; i >= 0; i--) {
+            if (i == 0) {
+                this.stringDate = stringDate + str[i];
+            } else {
+                this.stringDate = this.stringDate + str[i] + ".";
+            }
+        }
         this.date = date;
     }
 

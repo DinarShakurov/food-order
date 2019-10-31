@@ -37,7 +37,6 @@
 
             int i = 1;
             for (User user : usersList) {
-
         %>
         <tr>
             <td><%--<c:out value="${i}"/>--%><%=i++%></td>
@@ -48,7 +47,7 @@
             <td><%--<c:out value="${user.name}"/> --%><%=user.getName()%></td>
             <td><%--<c:out value="${user.phone_number}"/>--%><%=user.getPhone_number()%></td>
             <td><%--<c:out value="${user.address}"/>--%><%=user.getAddress()%></td>
-            <td><%--<c:out value="${user.date}"/>--%><%=user.getDate()%></td>
+            <td><%--<c:out value="${user.date}"/>--%><%=user.getStringDate()%></td>
             <td><%--<c:out value="${user.role}"/>--%><%=RoleUtil.getRoleNameByID(user.getRole())%></td>
             <td>
 
@@ -62,13 +61,11 @@
             </td>
             <td><input type="hidden" name="deleted_id" value="${user.id}"></td>
             <%}%>
-            <%--</c:if>--%>
-
         </tr>
         <%
             }
         %>
-        <%--</c:forEach>--%>
+
     </form>
 
     </tbody>

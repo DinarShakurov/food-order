@@ -57,7 +57,7 @@ public class BookReviewDAO {
 
     public static Optional<Double> getAvgRating() {
         Double avgRating = null;
-        String sqlQuery = "SELECT AVG(rating) FROM book AS 'avg_rate'";
+        String sqlQuery = "SELECT AVG(rating) AS avg_rate FROM book ";
         try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
             try (ResultSet resultSet = ps.executeQuery()) {
                 if (resultSet.next()) {
@@ -77,6 +77,7 @@ public class BookReviewDAO {
         bookReview.setRaiting(row.getInt("rating"));
         bookReview.setMessage(row.getString("message"));
         bookReview.setDate(row.getDate("date"));
+        bookReview.setUsername(UserDAO.findUserById(bookReview.getId_user()).get().getName());
         return bookReview;
     };
 

@@ -24,7 +24,6 @@ public class AddingDishes {
 
         if (orderList == null) {
             orderList = new ArrayList<>();
-
         }
 
         Integer id_menu = Integer.parseInt(request.getParameter("id_menu"));
