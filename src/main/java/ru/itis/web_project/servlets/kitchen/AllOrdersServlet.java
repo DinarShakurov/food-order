@@ -1,5 +1,7 @@
 package ru.itis.web_project.servlets.kitchen;
 
+import ru.itis.web_project.utils.AllOrders;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +16,7 @@ public class AllOrdersServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setAttribute("all_orders",AllOrders.showAllOrders());
+        request.getRequestDispatcher("/jsp/allOrders.jsp").forward(request, response);
     }
 }

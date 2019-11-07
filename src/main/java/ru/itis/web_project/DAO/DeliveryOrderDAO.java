@@ -14,9 +14,10 @@ import java.util.Optional;
 public class DeliveryOrderDAO {
     private static final Connection connection = ConnectionJDBC.getConnection();
 
-    public static Optional<List<DeliverOrder>> getAllDeliveryOrders() {
+    public static List<DeliverOrder> showAllDeliverOrders() {
         List<DeliverOrder> list = null;
-        String sqlQuery = "SELECT * FROM delivery_orders ORDER BY date";
+        String sqlQuery = "SELECT delivery_orders.*, menu.name_dish, user.address FROM delivery_orders LEFT JOIN menu ON delivery_orders.id_menu = menu.id LEFT JOIN user ON delivery_orders.id_user = user.id";
+
         try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
@@ -30,8 +31,9 @@ public class DeliveryOrderDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return Optional.ofNullable(list);
+        return Optional.ofNullable(list).orElse(null);
     }
+
 
     public static Optional<List<DeliverOrder>> getAllDeliveryOrdersByIdUser(Integer id_user) {
         List<DeliverOrder> list = null;
@@ -72,6 +74,10 @@ public class DeliveryOrderDAO {
         deliveryOrder.setId_menu(row.getInt("id_menu"));
         deliveryOrder.setCount_id_menu(row.getInt("count_dish"));
         deliveryOrder.setDate(row.getDate("date"));
+        if (row.getString("name_dish") != null) {
+            deliveryOrder.setNameDish(row.getString("name_dish"));
+            deliveryOrder.setUserAddress(row.getString("address"));
+        }
         return deliveryOrder;
     };
 }

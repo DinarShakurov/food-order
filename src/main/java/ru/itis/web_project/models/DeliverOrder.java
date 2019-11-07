@@ -9,6 +9,24 @@ public class DeliverOrder {
     private Integer id_menu;
     private Integer count_id_menu;
     private String stringDate;
+    private String nameDish;
+    private String userAddress;
+
+    public String getUserAddress() {
+        return userAddress;
+    }
+
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
+    }
+
+    public String getNameDish() {
+        return nameDish;
+    }
+
+    public void setNameDish(String nameDish) {
+        this.nameDish = nameDish;
+    }
 
     public Integer getCount_id_menu() {
         return count_id_menu;
@@ -38,6 +56,9 @@ public class DeliverOrder {
         return date;
     }
 
+    public void setStringDate(String stringDate) {
+        this.stringDate = stringDate;
+    }
 
     public String getStringDate() {
         return stringDate;
@@ -66,5 +87,16 @@ public class DeliverOrder {
     }
 
 
-
+    @Override
+    public String toString() {
+        return "DeliverOrder{" +
+                "id=" + id +
+                ", id_user=" + id_user +
+                ", date=" + date +
+                ", id_menu=" + id_menu +
+                ", count_id_menu=" + count_id_menu +
+                ", stringDate='" + stringDate + '\'' +
+                ", nameDish='" + nameDish + '\'' +
+                '}';
+    }
 }

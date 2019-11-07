@@ -14,33 +14,31 @@
 <table class="table basket">
     <thead>
     <tr>
-    </tr>
-    <tr>
-    <tr>
         <th>ID блюда</th>
         <th>ID пользователя</th>
+        <th>Адрес</th>
         <th>Название блюда</th>
         <th>В каком количестве</th>
-        <th>Цена за ед.</th>
         <th>Дата</th>
-    </tr>
     </tr>
     </thead>
     <tbody>
 
-    <tr>
-
-        <td>1</td>
-        <td>1</td>
-        <td>Burger</td>
-        <td>2</td>
-        <td>200</td>
-        <td>12.03.2012</td>
-
-    </tr>
-    <button type="submit" class="btn btn-sm btn-outline-danger">Удалить</button>
-    </td>
-    <td><input type="hidden" name="deleted_count_id" value="${order.count_id_menu}"></td>
+    <c:if test="${all_orders!=null}">
+        <c:forEach var="orders" items="${all_orders}">
+            <tr>
+                <td>id=${orders.id}</td>
+                <td>id=${orders.id_user}</td>
+                <td>${orders.userAddress}</td>
+                <td>${orders.nameDish}</td>
+                <td>${orders.count_id_menu}</td>
+                <td>${orders.stringDate}</td>
+            </tr>
+        </c:forEach>
+    </c:if>
+    <%--    <button type="submit" class="btn btn-sm btn-outline-danger">Удалить</button>
+        </td>
+        <td><input type="hidden" name="deleted_count_id" value="${order.count_id_menu}"></td>--%>
 
     </tbody>
 
