@@ -14,9 +14,6 @@
 <table class="table basket">
     <thead>
     <tr>
-    </tr>
-    <tr>
-    <tr>
         <th>ID блюда</th>
         <th>ID пользователя</th>
         <th>Название блюда</th>
@@ -24,19 +21,15 @@
         <th>Цена за ед.</th>
         <th>Дата</th>
     </tr>
-    </tr>
     </thead>
     <tbody>
-
     <tr>
-
         <td>1</td>
         <td>1</td>
         <td>Burger</td>
         <td>2</td>
         <td>200</td>
         <td>12.03.2012</td>
-
     </tr>
     <button type="submit" class="btn btn-sm btn-outline-danger">Удалить</button>
     </td>
