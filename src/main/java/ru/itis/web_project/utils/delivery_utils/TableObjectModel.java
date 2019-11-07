@@ -8,6 +8,15 @@ public class TableObjectModel {
     private Integer price;
     private Date date;
     private Integer id_menu;
+    private String stringDate;
+
+    public String getStringDate() {
+        return stringDate;
+    }
+
+    public void setStringDate(String stringDate) {
+        this.stringDate = stringDate;
+    }
 
     public Integer getId_menu() {
         return id_menu;

@@ -3,8 +3,6 @@ package ru.itis.web_project.servlets;
 import ru.itis.web_project.models.User;
 import ru.itis.web_project.utils.delivery_utils.DeliveryTableUtil;
 import ru.itis.web_project.utils.EditProfile;
-
-import javax.servlet.ServletContextListener;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +25,7 @@ public class ProfileServlet extends HttpServlet {
             EditProfile.editMainInfo(request);
             request.setAttribute("changeMainInfoStatus", "Данные изменены успешно");
         }
-        request.getRequestDispatcher("/jsp/profile.jsp").forward(request, response);
+        response.sendRedirect("/profile");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
