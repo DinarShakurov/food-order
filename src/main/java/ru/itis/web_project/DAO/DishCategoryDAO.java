@@ -43,7 +43,7 @@ public class DishCategoryDAO {
         try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
             ps.setString(1, categ_name);
             try (ResultSet rs = ps.executeQuery()) {
-                if(rs.next()){
+                if (rs.next()) {
                     return rs.getInt("id");
                 }
             }

@@ -63,7 +63,7 @@
                         <%}%>
 
                         <%if (PermissionUtil.haveAccess("showOrders", permissionList)) {%>
-                        <a class="dropdown-item" href="#">Посмотреть заказы</a> <%--ADMIN, KITCHEN--%>
+                        <a class="dropdown-item" href="/profile/all-orders">Посмотреть заказы</a> <%--ADMIN, KITCHEN--%>
                         <%}%>
 
                         <hr>

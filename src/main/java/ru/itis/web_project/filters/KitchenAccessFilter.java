@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName = "KitchenAccessFilter")
+@WebFilter(urlPatterns = {"/profile/all-orders"})
 public class KitchenAccessFilter implements Filter {
     public void destroy() {
     }
