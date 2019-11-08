@@ -11,6 +11,10 @@
 <body>
 <%@ include file="header.jsp" %>
 
+<h3 class="rating">
+    Средний рейтинг: <c:out value="${requestScope.reviewRating}"/>
+</h3>
+
 <%
     if (permissionList != null && PermissionUtil.haveAccess("makeReview", permissionList)) {
 %>
@@ -98,9 +102,7 @@
     <%--</tfoot>--%>
 
 </table>
-<div>
-    Средний рейтинг: <c:out value="${requestScope.reviewRating}"/>
-</div>
+
 <%@include file="BootstrapScripts.jsp" %>
 </body>
 </html>
