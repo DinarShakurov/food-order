@@ -1,6 +1,7 @@
 <%@ page import="ru.itis.web_project.utils.permissions.PermissionUtil" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 <html lang="ru">
 <head>
     <%@include file="BootstrapConnection.jsp" %>
@@ -25,12 +26,12 @@
 
     <div class="album py-5">
         <div class="container">
-            <%--foreach--%>
-            <c:forEach var="dish" items="${menuList}">
-                <form method="post" action="/menu">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card mb-4 shadow-sm">
+            <div class="row">
+                <%--<tag:menuTag permissionList="permissionList"></tag:menuTag>--%>
+                <%--foreach--%>
+                <c:forEach var="dish" items="${menuList}">
+                    <form method="post" action="/menu">
+                            <div class="card col-md-11">
                                 <img src="../image/dish.jpg">
                                 <div class="card-body">
                                     <p class="card-text">Название: ${dish.name}</p>
@@ -47,29 +48,29 @@
 
                                             <input name="id_menu" value="${dish.id}" type="hidden">
                                         </div>
-
                                         <br>
-                                        <div class="btn-group">
-                                            <% if (permissionList != null && PermissionUtil.haveAccess("addToBasket", permissionList)) {%>
-                                            <button name="add" value="add" type="submit"
-                                                    class="btn btn-sm btn-outline-success">
-                                                Добавить
-                                            </button>
-                                            <%}%>
-                                            <% if (permissionList != null && PermissionUtil.haveAccess("removeDishFromMenu", permissionList)) {%>
-                                            <button name="delete" value="delete" type="submit"
-                                                    class="btn btn-sm btn-outline-danger">
-                                                Удалить
-                                            </button>
-                                            <%}%>
-                                        </div>
+                                    </div>
+                                    <div class="btn-group">
+                                        <% if (permissionList != null && PermissionUtil.haveAccess("addToBasket", permissionList)) {%>
+                                        <button name="add" value="add" type="submit"
+                                                class="btn btn-sm btn-outline-success">
+                                            Добавить
+                                        </button>
+                                        <%}%>
+                                        <% if (permissionList != null && PermissionUtil.haveAccess("removeDishFromMenu", permissionList)) {%>
+                                        <button name="delete" value="delete" type="submit"
+                                                class="btn btn-sm btn-outline-danger">
+                                            Удалить
+                                        </button>
+                                        <%}%>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </form>
-            </c:forEach>
+
+                    </form>
+                </c:forEach>
+            </div>
+
         </div>
         <% if (permissionList != null && PermissionUtil.haveAccess("addDishToMenu", permissionList)) {%>
         <form method="get" action="/menu/add-dish">

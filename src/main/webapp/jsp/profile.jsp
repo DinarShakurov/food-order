@@ -28,7 +28,6 @@
             <div class="profile-head">
                 <h3>
                     Restaurant
-
                 </h3>
                 <h6>
                     ресторан интернациональной кухни
