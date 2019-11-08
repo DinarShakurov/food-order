@@ -1,5 +1,6 @@
 package ru.itis.web_project.servlets;
 
+import ru.itis.web_project.utils.DishToOffer;
 import ru.itis.web_project.utils.user_action.AddingDishes;
 
 import javax.servlet.ServletException;
@@ -16,8 +17,7 @@ public class BasketServlet extends HttpServlet {
             AddingDishes.deleteDishFromBasket(request);
         } else {
             if (request.getSession(false).getAttribute("orderDeliveryList") != null) {
-
-                //TODO сделать бизнес логику, реквест не должен передаваться в качестве параметра, и переделать таблицу пермишенов
+                DishToOffer.makeOffer(request);
                 AddingDishes.buyFromBasket(request);
                 request.setAttribute("buyStatus", "Заказ был добавлен");
             } else {

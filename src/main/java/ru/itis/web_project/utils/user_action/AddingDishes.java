@@ -2,6 +2,7 @@ package ru.itis.web_project.utils.user_action;
 
 import ru.itis.web_project.DAO.DeliveryOrderDAO;
 import ru.itis.web_project.DAO.DishDAO;
+import ru.itis.web_project.DAO.DishPairDAO;
 import ru.itis.web_project.models.DeliverOrder;
 import ru.itis.web_project.models.Dish;
 import ru.itis.web_project.models.User;
@@ -10,8 +11,7 @@ import ru.itis.web_project.utils.delivery_utils.TableObjectModel;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class AddingDishes {
 
@@ -22,9 +22,14 @@ public class AddingDishes {
         User user = (User) session.getAttribute("user");
         Integer totalPriceFromBasket = (Integer) session.getAttribute("totalPriceFromBasket");
 
+        Set<Integer> dishIdSet = ((HashSet<Integer>) session.getAttribute("dishIdSet"));
         if (orderList == null) {
             orderList = new ArrayList<>();
         }
+        if (dishIdSet == null) {
+            dishIdSet = new HashSet<>();
+        }
+
 
         Integer id_menu = Integer.parseInt(request.getParameter("id_menu"));
         Integer id_count_menu = Integer.parseInt(request.getParameter("id_count_menu"));
@@ -46,8 +51,10 @@ public class AddingDishes {
                 break;
             }
         }
-        if (!tag) orderList.add(tableObject);
-
+        if (!tag) {
+            orderList.add(tableObject);
+            dishIdSet.add(id_menu);
+        }
         session.setAttribute("totalPriceFromBasket", totalPriceFromBasket);
         session.setAttribute("orderDeliveryList", orderList);
     }
@@ -61,12 +68,25 @@ public class AddingDishes {
         if (orderList == null) {
             return false; //ваша корзина пуста
         }
+        TableObjectModel[] array = new TableObjectModel[orderList.size()];
+        array = orderList.toArray(array);
+
         for (TableObjectModel tableObject : orderList) {
             DeliverOrder deliverOrder = new DeliverOrder();
             deliverOrder.setCount_id_menu(tableObject.getCount_id_menu());
             deliverOrder.setId_menu(tableObject.getId_menu());
             deliverOrder.setId_user(user.getId());
             DeliveryOrderDAO.insertDeliveryOrder(deliverOrder);
+
+        }
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[i].getId_menu() < array[j].getId_menu()) {
+                    DishPairDAO.updatePair(array[i].getId_menu(), array[j].getId_menu());
+                } else if (array[i].getId_menu() > array[j].getId_menu()) {
+                    DishPairDAO.updatePair(array[j].getId_menu(), array[i].getId_menu());
+                }
+            }
         }
         session.setAttribute("orderDeliveryList", null);
         session.setAttribute("totalPriceFromBasket", 0);
@@ -79,14 +99,17 @@ public class AddingDishes {
 
         HttpSession session = request.getSession(false);
         List<TableObjectModel> orderList = (ArrayList) session.getAttribute("orderDeliveryList");
-
+        Set<Integer> dishIdSet = ((HashSet<Integer>) session.getAttribute("dishIdSet"));
         for (TableObjectModel tableObject : orderList) {
             if (tableObject.getId_menu().equals(deleted_id) && tableObject.getCount_id_menu().equals(count_deleted_id)) {
                 orderList.remove(tableObject);
+                dishIdSet.remove(deleted_id);
                 session.setAttribute("totalPriceFromBasket", (Integer) session.getAttribute("totalPriceFromBasket") - tableObject.getPrice() * tableObject.getCount_id_menu());
                 break;
             }
         }
+
+
     }
 
 }

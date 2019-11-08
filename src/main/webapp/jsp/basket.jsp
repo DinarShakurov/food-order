@@ -48,7 +48,7 @@
     </tbody>
     <tfoot>
     <tr>
-        <form method="post" action="/profile/basket">
+        <form method="post" action="/profile/user/basket">
             <td></td>
             <td></td>
             <td></td>

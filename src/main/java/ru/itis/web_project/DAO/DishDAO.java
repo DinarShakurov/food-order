@@ -29,6 +29,22 @@ public class DishDAO {
         return false;
     }
 
+    public static Dish findByName(String name) {
+        String sqlQuery = "SELECT * FROM menu WHERE name_dish = ?";
+        Dish dish = null;
+        try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
+            ps.setString(1, name);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    dish = rowMapper.mapRow(rs);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return dish;
+    }
+
     public static Optional<List<Dish>> getAllDishes() {
         String sqlQuery = "SELECT * FROM menu ORDER BY id_category";
         List<Dish> list = null;
@@ -55,7 +71,7 @@ public class DishDAO {
         try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
             ps.setInt(1, id);
             try (ResultSet rs = ps.executeQuery()) {
-                if(rs.next()){
+                if (rs.next()) {
                     dish = rowMapper.mapRow(rs);
                 }
             }
