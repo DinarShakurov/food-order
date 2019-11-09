@@ -46,7 +46,6 @@
     </form>
 </div> <!-- /container -->
 
-
 <%@include file="BootstrapScripts.jsp" %>
 </body>
 </html>
