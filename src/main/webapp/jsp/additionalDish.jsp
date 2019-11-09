@@ -59,6 +59,7 @@
             </div>
         </div>
     </div>
+    <a href="blackListOfDishes.jsp">Изменить черный список</a>
     <form action="/profile/user/basket" method="post">
         <button name="buy" value="buy" type="submit"
                 class="btn btn-sm btn-outline-success">
