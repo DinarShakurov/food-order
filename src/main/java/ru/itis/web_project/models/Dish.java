@@ -6,6 +6,7 @@ public class Dish {
     private Integer price;
     private String composition;
     private Integer id_category;
+    private String fileName;
 
 
     public Integer getId_category() {
@@ -15,9 +16,6 @@ public class Dish {
     public void setId_category(Integer id_category) {
         this.id_category = id_category;
     }
-
-
-
 
     public Integer getId() {
         return id;
@@ -49,5 +47,12 @@ public class Dish {
 
     public void setComposition(String composition) {
         this.composition = composition;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+    public String getFileName() {
+        return fileName;
     }
 }
