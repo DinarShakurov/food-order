@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/profile/user/basket/offer")
+@WebServlet("/profile/user/basket/offer")
 public class OfferServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getParameter("add") != null) {

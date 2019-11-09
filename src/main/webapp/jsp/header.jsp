@@ -52,6 +52,7 @@
 
                         <%if (PermissionUtil.haveAccess("checkBasket", permissionList)) {%>
                         <a class="dropdown-item" href="/profile/user/basket">Корзина</a> <%--USER--%>
+                        <a class="dropdown-item" href="/profile/user/blacklist">Черный список</a>
                         <%}%>
 
                         <%if (PermissionUtil.haveAccess("addDishToMenu", permissionList)) {%>
