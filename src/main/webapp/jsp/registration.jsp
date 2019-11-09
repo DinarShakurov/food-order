@@ -3,6 +3,7 @@
 <html lang="ru">
 <head>
     <%@include file="BootstrapConnection.jsp" %>
+    <script type="text/javascript" src="js/Registration.js"></script>
 
     <title>Registration</title>
     <link rel="stylesheet" href="/css/style.css" type="text/css">
@@ -41,9 +42,15 @@
                autofocus="">
         <br>
 
-        <label for="inputPassword" class="sr-only">Пароль</label>
-        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="пароль"
-               required="">
+        <label for="password1" class="sr-only">Пароль</label>
+        <input name="password" type="password" id="password1" class="form-control" placeholder="пароль"
+               required="" onkeyup="checkPass(); return false;">
+        <br>
+
+        <label for="password2" class="sr-only">Пароль</label>
+        <input name="password" type="password" id="password2" class="form-control" placeholder="повторите пароль"
+               required="" onkeyup="checkPass(); return false;">
+        <div id="error-nwl"></div>
         <br>
 
         <button class="btn btn-lg btn-success btn-block" type="submit">Отправить</button>
