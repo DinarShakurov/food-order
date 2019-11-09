@@ -32,7 +32,7 @@
                 <c:forEach var="dish" items="${menuList}">
                     <form method="post" action="/menu">
                             <div class="card col-md-11">
-                                <img src="../image/dish.jpg">
+                                <img src="../image/<%--dish.jpg--%><%--${dish.fileName}--%><c:out value="${dish.fileName}"/>">
                                 <div class="card-body">
                                     <p class="card-text">Название: ${dish.name}</p>
                                     <p class="card-text">Инфа о блюде: ${dish.composition}</p>

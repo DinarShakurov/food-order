@@ -15,12 +15,13 @@ public class DishDAO {
     private static final Connection connection = ConnectionJDBC.getConnection();
 
     public static boolean insert(Dish dish) {
-        String sqlQuery = "INSERT INTO menu (name_dish, price, composition,id_category) VALUES (?,?,?,?)";
+        String sqlQuery = "INSERT INTO menu (name_dish, price, composition,id_category,filePath) VALUES (?,?,?,?,?)";
         try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
             ps.setString(1, dish.getName());
             ps.setInt(2, dish.getPrice());
             ps.setString(3, dish.getComposition());
             ps.setInt(4, dish.getId_category());
+            ps.setString(5,dish.getFileName());
             ps.execute();
             return true;
         } catch (SQLException e) {
@@ -133,6 +134,7 @@ public class DishDAO {
         dish.setPrice(row.getInt("price"));
         dish.setComposition(row.getString("composition"));
         dish.setId_category(row.getInt("id_category"));
+        dish.setFileName(row.getString("filePath"));
         return dish;
     };
 
