@@ -1,8 +1,6 @@
 package ru.itis.web_project.servlets;
 
-import ru.itis.web_project.utils.DishToOffer;
-import ru.itis.web_project.utils.user_action.AddingDishes;
-
+import ru.itis.web_project.utils.user_action.DishesUtil;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,16 +11,11 @@ import java.io.IOException;
 @WebServlet("/profile/user/basket")
 public class BasketServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getParameter("buyAll") == null) {
-            AddingDishes.deleteDishFromBasket(request);
-        } else {
-            if (request.getSession(false).getAttribute("orderDeliveryList") != null) {
-                DishToOffer.makeOffer(request);
-                AddingDishes.buyFromBasket(request);
-                request.setAttribute("buyStatus", "Заказ был добавлен");
-            } else {
-                request.setAttribute("buyStatus", "Список пуст");
-            }
+        if (request.getParameter("delete") != null) {
+            DishesUtil.deleteDishFromBasket(request);
+        } else if (request.getParameter("buy") != null) {
+            DishesUtil.buyFromBasket(request);
+            request.setAttribute("buyStatus", "Заказ был добавлен");
         }
         request.getRequestDispatcher("/jsp/basket.jsp").forward(request, response);
 

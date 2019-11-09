@@ -1,11 +1,13 @@
 package ru.itis.web_project.DAO;
 
+import ru.itis.web_project.models.DishPair;
 import ru.itis.web_project.utils.ConnectionJDBC;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DishPairDAO {
@@ -59,5 +61,42 @@ public class DishPairDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static List<DishPair> getAllPairs(Integer id_dish) {
+        /*List<Integer> pairList = new ArrayList<>();*/
+        List<DishPair> dishPairList = new ArrayList<>();
+        String sqlQuery = "SELECT id_dish_1, count FROM dish_pair WHERE id_dish_2 = ? AND count>0";
+        try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
+            ps.setInt(1, id_dish);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    /*pairList.add(rs.getInt("id_dish_1"));*/
+
+                    dishPairList.add(new DishPair()
+                            .setId(rs.getInt("id_dish_1"))
+                            .setCount(rs.getInt("count")));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        sqlQuery = "SELECT id_dish_2, count FROM dish_pair WHERE id_dish_1 = ? AND count>0";
+        try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
+            ps.setInt(1, id_dish);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    /*pairList.add(rs.getInt("id_dish_2"));*/
+                    dishPairList.add(new DishPair()
+                            .setId(rs.getInt("id_dish_2"))
+                            .setCount(rs.getInt("count")));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (dishPairList.size() == 0) return null;
+        return dishPairList;
     }
 }

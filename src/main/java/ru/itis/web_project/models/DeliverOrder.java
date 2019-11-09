@@ -16,55 +16,57 @@ public class DeliverOrder {
         return userAddress;
     }
 
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
-    }
+
 
     public String getNameDish() {
         return nameDish;
     }
 
-    public void setNameDish(String nameDish) {
-        this.nameDish = nameDish;
-    }
+
 
     public Integer getCount_id_menu() {
         return count_id_menu;
     }
 
-    public void setCount_id_menu(Integer count_id_menu) {
-        this.count_id_menu = count_id_menu;
-    }
+
 
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+
 
     public Integer getId_user() {
         return id_user;
     }
 
-    public void setId_user(Integer id_user) {
-        this.id_user = id_user;
-    }
 
     public Date getDate() {
         return date;
     }
 
-    public void setStringDate(String stringDate) {
-        this.stringDate = stringDate;
-    }
 
     public String getStringDate() {
         return stringDate;
     }
 
-    public void setDate(Date date) {
+
+
+    public Integer getId_menu() {
+        return id_menu;
+    }
+
+    public DeliverOrder setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public DeliverOrder setId_user(Integer id_user) {
+        this.id_user = id_user;
+        return this;
+    }
+
+    public DeliverOrder setDate(Date date) {
         this.stringDate = "";
         String[] str = date.toString().split("-");
 
@@ -76,16 +78,33 @@ public class DeliverOrder {
             }
         }
         this.date = date;
+        return this;
     }
 
-    public Integer getId_menu() {
-        return id_menu;
-    }
-
-    public void setId_menu(Integer id_menu) {
+    public DeliverOrder setId_menu(Integer id_menu) {
         this.id_menu = id_menu;
+        return this;
     }
 
+    public DeliverOrder setCount_id_menu(Integer count_id_menu) {
+        this.count_id_menu = count_id_menu;
+        return this;
+    }
+
+    public DeliverOrder setStringDate(String stringDate) {
+        this.stringDate = stringDate;
+        return this;
+    }
+
+    public DeliverOrder setNameDish(String nameDish) {
+        this.nameDish = nameDish;
+        return this;
+    }
+
+    public DeliverOrder setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
+        return this;
+    }
 
     @Override
     public String toString() {

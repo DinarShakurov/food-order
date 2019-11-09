@@ -30,7 +30,7 @@ public class DishDAO {
     }
 
     public static Dish findByName(String name) {
-        String sqlQuery = "SELECT * FROM menu WHERE name_dish = ?";
+        String sqlQuery = "SELECT * FROM menu WHERE name_dish = ? AND isUsed = 1";
         Dish dish = null;
         try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
             ps.setString(1, name);
@@ -46,7 +46,7 @@ public class DishDAO {
     }
 
     public static Optional<List<Dish>> getAllDishes() {
-        String sqlQuery = "SELECT * FROM menu ORDER BY id_category";
+        String sqlQuery = "SELECT * FROM menu WHERE isUsed = 1 ORDER BY id_category";
         List<Dish> list = null;
         try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
             try (ResultSet rs = ps.executeQuery()) {
@@ -82,7 +82,7 @@ public class DishDAO {
     }
 
     public static Optional<List<Dish>> getAllDishesByCategory(Integer id_category) {
-        String sqlQuery = "SELECT * FROM menu WHERE id_category = ?";
+        String sqlQuery = "SELECT * FROM menu WHERE id_category = ?  AND isUsed = 1";
         List<Dish> list = null;
         try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
             ps.setInt(1, id_category);
@@ -116,7 +116,8 @@ public class DishDAO {
     }
 
     public static void deleteDishFromMenu(Integer id) {
-        String sqlQuery = "DELETE FROM menu WHERE id = ?";
+        /*String sqlQuery = "DELETE FROM menu WHERE id = ?";*/
+        String sqlQuery = "UPDATE menu SET isUsed = 0 WHERE id = ?";
         try (PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
             ps.setInt(1, id);
             ps.execute();

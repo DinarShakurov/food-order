@@ -36,7 +36,7 @@
                 <td><c:out value="${order.count_id_menu}"/></td>
 
                 <td>
-                    <button type="submit" class="btn btn-sm btn-outline-danger">Удалить</button>
+                    <button name="delete" value="delete" type="submit" class="btn btn-sm btn-outline-danger">Удалить</button>
                 </td>
                 <td><input type="hidden" name="deleted_count_id" value="${order.count_id_menu}"></td>
                 <td><input type="hidden" name="deleted_id" value="${order.id_menu}"></td>
@@ -48,14 +48,15 @@
     </tbody>
     <tfoot>
     <tr>
-        <form method="post" action="/profile/user/basket">
+        <%--<form method="post" action="/profile/user/basket">--%>
+        <form method="get" action="/profile/user/basket/offer">
             <td></td>
             <td></td>
             <td></td>
             <td>Итого:
                 <c:out value="${sessionScope.totalPriceFromBasket}"/></td>
             <td>
-                <button name="buyAll" value="buyAll" type="submit" class="btn btn-sm btn-success">Заказать
+                <button <%--name="buyAll" value="buyAll"--%> type="submit" class="btn btn-sm btn-success">Заказать
                 </button>
             </td>
         </form>

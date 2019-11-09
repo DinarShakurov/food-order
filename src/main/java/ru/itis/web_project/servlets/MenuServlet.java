@@ -1,6 +1,6 @@
 package ru.itis.web_project.servlets;
 
-import ru.itis.web_project.utils.user_action.AddingDishes;
+import ru.itis.web_project.utils.user_action.DishesUtil;
 import ru.itis.web_project.utils.admin_action.EditMenu;
 import ru.itis.web_project.utils.MenuUtil;
 
@@ -17,7 +17,7 @@ public class MenuServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         if (request.getParameter("add") != null) {
             request.setAttribute("addingStatus", "Блюдо добавлено в ваш заказ");
-            AddingDishes.toBasket(request);
+            DishesUtil.toBasket(request);
         } else if (request.getParameter("delete") != null) {
             EditMenu.deleteFromMenu(request);
         }

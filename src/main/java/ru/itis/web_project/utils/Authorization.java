@@ -1,5 +1,6 @@
 package ru.itis.web_project.utils;
 
+import ru.itis.web_project.DAO.AntipathyDAO;
 import ru.itis.web_project.DAO.UserDAO;
 import ru.itis.web_project.models.User;
 import ru.itis.web_project.utils.permissions.PermissionUtil;
@@ -45,6 +46,7 @@ public class Authorization {
         User user1 = user.get();
         HttpSession session = request.getSession(true);
         session.setAttribute("user", user1);
+        session.setAttribute("userAntipathySet", AntipathyDAO.getUsersAntipathy(user1.getId()));
         session.setAttribute("permissionList", PermissionUtil.setPermissionForUser(user1.getRole()));
         session.setAttribute("totalPriceFromBasket", 0);
     }

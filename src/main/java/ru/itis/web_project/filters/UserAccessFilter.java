@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/profile/user/basket"})
+@WebFilter(urlPatterns = {"/profile/user/*"})
 public class UserAccessFilter implements Filter {
     public void destroy() {
     }

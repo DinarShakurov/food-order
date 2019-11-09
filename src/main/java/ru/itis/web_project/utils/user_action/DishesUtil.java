@@ -1,5 +1,6 @@
 package ru.itis.web_project.utils.user_action;
 
+import ru.itis.web_project.DAO.AntipathyDAO;
 import ru.itis.web_project.DAO.DeliveryOrderDAO;
 import ru.itis.web_project.DAO.DishDAO;
 import ru.itis.web_project.DAO.DishPairDAO;
@@ -13,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.sql.Date;
 import java.util.*;
 
-public class AddingDishes {
+public class DishesUtil {
 
     public static void toBasket(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
@@ -28,6 +29,7 @@ public class AddingDishes {
         }
         if (dishIdSet == null) {
             dishIdSet = new HashSet<>();
+            session.setAttribute("dishIdSet", dishIdSet);
         }
 
 
@@ -89,6 +91,7 @@ public class AddingDishes {
             }
         }
         session.setAttribute("orderDeliveryList", null);
+        session.setAttribute("dishIdSet", null);
         session.setAttribute("totalPriceFromBasket", 0);
         return true;
     }
@@ -108,8 +111,16 @@ public class AddingDishes {
                 break;
             }
         }
+    }
 
-
+    public static void updateUserAntipathy(boolean isDelete, HashSet<Integer> userAntipathy, int dish_id, int user_id) {
+        if (    isDelete) {
+            userAntipathy.remove(dish_id);
+            AntipathyDAO.delete(user_id, dish_id);
+        } else {
+            userAntipathy.add(dish_id);
+            AntipathyDAO.insert(user_id, dish_id);
+        }
     }
 
 }

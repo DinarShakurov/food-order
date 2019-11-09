@@ -22,9 +22,9 @@ public class DeliveryOrderDAO {
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     list = new ArrayList<>();
-                    list.add(rowMapper.mapRow(rs));
+                    list.add(rowMapper.mapRow(rs).setNameDish(rs.getString("name_dish")).setUserAddress(rs.getString("address")));
                     while (rs.next()) {
-                        list.add(rowMapper.mapRow(rs));
+                        list.add(rowMapper.mapRow(rs).setNameDish(rs.getString("name_dish")).setUserAddress(rs.getString("address")));
                     }
                 }
             }
@@ -74,10 +74,6 @@ public class DeliveryOrderDAO {
         deliveryOrder.setId_menu(row.getInt("id_menu"));
         deliveryOrder.setCount_id_menu(row.getInt("count_dish"));
         deliveryOrder.setDate(row.getDate("date"));
-        if (row.getString("name_dish") != null) {
-            deliveryOrder.setNameDish(row.getString("name_dish"));
-            deliveryOrder.setUserAddress(row.getString("address"));
-        }
         return deliveryOrder;
     };
 }
