@@ -39,7 +39,7 @@ public class EditMenu {
     }
 
     private static String uploadFile(Part file) {
-        String fileName = getFileName(file);
+        String fileName = file.getSubmittedFileName();
         String path = "C:\\Users\\Dinar Shakurov\\IdeaProjects\\Project_1sem\\src\\main\\webapp\\image\\" + fileName;
 
         File photo = new File(path);
@@ -63,7 +63,7 @@ public class EditMenu {
         return "";
     }
 
-    private static String getFileName(Part file) {
+    /*private static String getFileName(Part file) {
         String fileHeader = file.getHeader("content-disposition");
         for (String content : fileHeader.split(";")) {
             if (content.trim().startsWith("filename")) {
@@ -71,5 +71,5 @@ public class EditMenu {
             }
         }
         return "";
-    }
+    }*/
 }
