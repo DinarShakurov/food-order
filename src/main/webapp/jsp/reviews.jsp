@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 <html lang="ru">
 <head>
 
@@ -56,29 +57,7 @@
     <%--        for (int i = 0; i <; i++) {--%>
     <%--    %>--%>
 
-    <c:forEach items="${requestScope.reviewList}" var="review">
-        <tr>
-            <td> ${review.username}</td>
-            <td> ${review.message}</td>
-            <td> ${review.raiting}</td>
-            <td>
-                    ${review.stringDate}
-            </td>
-            <%
-                if (PermissionUtil.haveAccess("deleteReviews", permissionList)) {
-            %>
-            <form action="/reviews" method="post">
-                <td>
-                    <button name="deleteReview" value="${review.id}" type="submit" class="btn btn-sm btn-outline-danger">
-                        Удалить отзыв
-                    </button>
-                </td>
-            </form>
-            <%
-                }
-            %>
-        </tr>
-    </c:forEach>
+    <tag:reviewsTag></tag:reviewsTag>
     <%--    <%--%>
     <%--        }--%>
     <%--    %>--%>
