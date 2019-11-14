@@ -11,7 +11,6 @@ public class ConnectionJDBC {
     private static final String USER = "root";
     private static final String PASSWORD = "ifrehjdlbyfh";
 
-
     public static Connection getConnection() {
         if (connection != null) {
             return connection;
