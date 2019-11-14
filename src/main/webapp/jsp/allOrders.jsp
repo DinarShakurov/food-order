@@ -11,6 +11,7 @@
 <body>
 <%@ include file="header.jsp" %>
 
+<c:if test="${sessionScope.user.id==2}"></c:if>
 <table class="table basket">
     <thead>
     <tr>
@@ -19,7 +20,7 @@
         <th>Адрес</th>
         <th>Название блюда</th>
         <th>В каком количестве</th>
-        <th>ДAата</th>
+        <th>Дата</th>
     </tr>
     </thead>
     <tbody>

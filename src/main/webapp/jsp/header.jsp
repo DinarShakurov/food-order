@@ -16,12 +16,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/menu">Меню</a>
                 </li>
-                <li class="nav-item">
+                <%--<li class="nav-item">
                     <a class="nav-link" href="#">Галерея</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Акция</a>
-                </li>
+                </li>--%>
                 <li class="nav-item">
                     <a class="nav-link" href="/reviews">Отзывы</a>
                 </li>

@@ -66,6 +66,16 @@ public class TableObjectModel {
     }
 
     public void setDate(Date date) {
+        this.stringDate = "";
+        String[] str = date.toString().split("-");
+
+        for (int i = str.length - 1; i >= 0; i--) {
+            if (i == 0) {
+                this.stringDate = stringDate + str[i];
+            } else {
+                this.stringDate = this.stringDate + str[i] + ".";
+            }
+        }
         this.date = date;
     }
 }
