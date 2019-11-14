@@ -27,48 +27,7 @@
     <div class="album py-5">
         <div class="container">
             <div class="row">
-                <%--<tag:menuTag permissionList="permissionList"></tag:menuTag>--%>
-                <%--foreach--%>
-                <c:forEach var="dish" items="${menuList}">
-                    <form method="post" action="/menu">
-                            <div class="card col-md-11">
-                                <img src="../image/<c:out value="${dish.fileName}"/>">
-                                <div class="card-body">
-                                    <p class="card-text">Название: ${dish.name}</p>
-                                    <p class="card-text">Инфа о блюде: ${dish.composition}</p>
-                                    <br>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <small class="text-muted">цена: ${dish.price}</small>
-                                        <div>
-                                            <% if (permissionList != null && PermissionUtil.haveAccess("addToBasket", permissionList)) {%>
-                                            <input name="id_count_menu" type="number" min="1" max="10" step="1"
-                                                   value="1"
-                                                   pattern="[0-9]*">
-                                            <%}%>
-
-                                            <input name="id_menu" value="${dish.id}" type="hidden">
-                                        </div>
-                                        <br>
-                                    </div>
-                                    <div class="btn-group">
-                                        <% if (permissionList != null && PermissionUtil.haveAccess("addToBasket", permissionList)) {%>
-                                        <button name="add" value="add" type="submit"
-                                                class="btn btn-sm btn-outline-success">
-                                            Добавить
-                                        </button>
-                                        <%}%>
-                                        <% if (permissionList != null && PermissionUtil.haveAccess("removeDishFromMenu", permissionList)) {%>
-                                        <button name="delete" value="delete" type="submit"
-                                                class="btn btn-sm btn-outline-danger">
-                                            Удалить
-                                        </button>
-                                        <%}%>
-                                    </div>
-                                </div>
-                            </div>
-
-                    </form>
-                </c:forEach>
+                <tag:menuTag permissionList="${permissionList}"></tag:menuTag>
             </div>
 
         </div>

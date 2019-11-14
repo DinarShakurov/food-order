@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib  prefix="tag" tagdir="/WEB-INF/tags" %>
 <html lang="ru">
 <head>
 
@@ -51,55 +52,11 @@
         <th>Дата</th>
     </tr>
     </thead>
-    <tbody>
-    <%--    <%--%>
-    <%--        for (int i = 0; i <; i++) {--%>
-    <%--    %>--%>
 
-    <c:forEach items="${requestScope.reviewList}" var="review">
-        <tr>
-            <td> ${review.username}</td>
-            <td> ${review.message}</td>
-            <td> ${review.raiting}</td>
-            <td>
-                    ${review.stringDate}
-            </td>
-            <%
-                if (PermissionUtil.haveAccess("deleteReviews", permissionList)) {
-            %>
-            <form action="/reviews" method="post">
-                <td>
-                    <button name="deleteReview" value="${review.id}" type="submit" class="btn btn-sm btn-outline-danger">
-                        Удалить отзыв
-                    </button>
-                </td>
-            </form>
-            <%
-                }
-            %>
-        </tr>
-    </c:forEach>
-    <%--    <%--%>
-    <%--        }--%>
-    <%--    %>--%>
+<tag:reviewsTag permissionList="${permissionList}"></tag:reviewsTag>
 
 
     </tbody>
-    <%--<tfoot>--%>
-    <%--<tr>--%>
-    <%--<form>--%>
-    <%--<td><input name="text" type="number" id="inputMark" class="form-control" placeholder="оценка" required=""--%>
-    <%--min="1" max="10" step="1" autofocus=""></td>--%>
-    <%--<td>--%>
-    <%--<input name="text" type="text" id="inputText" class="form-control" placeholder="отзыв" required=""--%>
-    <%--autofocus=""></td>--%>
-    <%--<td>--%>
-    <%--<button type="submit" class="btn btn-sm btn-success">Добавить отзыв--%>
-    <%--</button>--%>
-    <%--</td>--%>
-    <%--</form>--%>
-    <%--</tr>--%>
-    <%--</tfoot>--%>
 
 </table>
 
