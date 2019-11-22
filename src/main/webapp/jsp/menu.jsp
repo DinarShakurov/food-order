@@ -1,4 +1,4 @@
-<%@ page import="ru.itis.web_project.utils.permissions.PermissionUtil" %>
+<%@ page import="ru.itis.web_project.logic.permissions.PermissionService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
@@ -31,7 +31,7 @@
             </div>
 
         </div>
-        <% if (permissionList != null && PermissionUtil.haveAccess("addDishToMenu", permissionList)) {%>
+        <% if (PermissionService.haveAccess("addDishToMenu", permissionList)) {%>
         <form method="get" action="/menu/add-dish">
             <button name="addDish" value="addDish" type="submit"
                     class="btn btn-lg btn-success">

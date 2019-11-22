@@ -1,5 +1,5 @@
 <%@ page import="ru.itis.web_project.models.User" %>
-<%@ page import="ru.itis.web_project.utils.RoleUtil" %>
+<%@ page import="ru.itis.web_project.logic.RoleService" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ru">
@@ -18,6 +18,7 @@
     </tr>
     <tr>
         <th>#</th>
+        <th>id</th>
         <th>Login</th>
         <th>Username</th>
         <th>Phone number</th>
@@ -40,6 +41,7 @@
         %>
         <tr>
             <td><%--<c:out value="${i}"/>--%><%=i++%></td>
+            <td><%--<c:out value="${i}"/>--%><%=user.getId()%></td>
             <td>
                 <%--<c:out value="${user.login}"/>--%>
                 <%=user.getLogin()%>
@@ -48,7 +50,7 @@
             <td><%--<c:out value="${user.phone_number}"/>--%><%=user.getPhone_number()%></td>
             <td><%--<c:out value="${user.address}"/>--%><%=user.getAddress()%></td>
             <td><%--<c:out value="${user.date}"/>--%><%=user.getStringDate()%></td>
-            <td><%--<c:out value="${user.role}"/>--%><%=RoleUtil.getRoleNameByID(user.getRole())%></td>
+            <td><%--<c:out value="${user.role}"/>--%><%=RoleService.getRoleNameByID(user.getRole())%></td>
             <td>
 
             </td>

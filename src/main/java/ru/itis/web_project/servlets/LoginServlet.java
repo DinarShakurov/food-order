@@ -1,6 +1,6 @@
 package ru.itis.web_project.servlets;
 
-import ru.itis.web_project.utils.Authorization;
+import ru.itis.web_project.logic.Authorization;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

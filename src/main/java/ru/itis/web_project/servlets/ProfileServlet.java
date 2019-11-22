@@ -1,8 +1,8 @@
 package ru.itis.web_project.servlets;
 
 import ru.itis.web_project.models.User;
-import ru.itis.web_project.utils.delivery_utils.DeliveryTableUtil;
-import ru.itis.web_project.utils.EditProfile;
+import ru.itis.web_project.logic.delivery_utils.DeliveryTableUtil;
+import ru.itis.web_project.logic.EditProfile;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

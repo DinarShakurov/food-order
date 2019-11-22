@@ -1,4 +1,4 @@
-<%@ tag import="ru.itis.web_project.utils.permissions.PermissionUtil" %>
+<%@ tag import="ru.itis.web_project.logic.permissions.PermissionService" %>
 <%@ tag pageEncoding="UTF-8" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@attribute name="permissionList" required="true" type="java.util.List" %>
@@ -12,7 +12,7 @@
                 ${review.stringDate}
         </td>
         <%
-            if (PermissionUtil.haveAccess("deleteReviews", permissionList)) {
+            if (PermissionService.haveAccess("deleteReviews", permissionList)) {
         %>
         <form action="/reviews" method="post">
             <td>

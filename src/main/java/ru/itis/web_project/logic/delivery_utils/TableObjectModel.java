@@ -1,4 +1,4 @@
-package ru.itis.web_project.utils.delivery_utils;
+package ru.itis.web_project.logic.delivery_utils;
 
 import java.sql.Date;
 

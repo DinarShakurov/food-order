@@ -1,4 +1,4 @@
-package ru.itis.web_project.utils;
+package ru.itis.web_project.logic;
 
 import ru.itis.web_project.DAO.DishDAO;
 import ru.itis.web_project.DAO.DishPairDAO;
@@ -10,13 +10,13 @@ import javax.servlet.http.HttpSession;
 import java.util.*;
 
 public class DishToOffer {
-    public static List<Dish> makeOffer(HttpServletRequest request) {
+    public static List<Dish> makeOffer(Set<Integer> usersAntipathySet, Set<Integer> dishIdFromBasketSet) {
+/*
         HttpSession session = request.getSession(false);
         Set<Integer> usersAntipathySet = (HashSet<Integer>) session.getAttribute("userAntipathySet");
         Set<Integer> dishIdFromBasketSet = (HashSet<Integer>) session.getAttribute("dishIdSet");
-
+*/
         List<Dish> dishListForOffer = new ArrayList<>();
-
         List<Integer> dishIdFromBasketList = new ArrayList<>(dishIdFromBasketSet);
 
         dishIdFromBasketList.sort(Comparator.comparingInt(x -> x));

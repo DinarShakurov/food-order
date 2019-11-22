@@ -15,13 +15,16 @@ public class ExitServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getSession().invalidate();
+
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
             if(cookie.getName().equals("userId")){
-                cookie.setMaxAge(0);
+                Cookie cookie1 = new Cookie("userId", null);
+                cookie1.setMaxAge(0);
+                response.addCookie(cookie1);
             }
         }
+        request.getSession().invalidate();
         response.sendRedirect("/main");
     }
 }

@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="ru.itis.web_project.utils.permissions.PermissionUtil" %>
+<%@ page import="ru.itis.web_project.logic.permissions.PermissionService" %>
 
 <html lang="ru">
 <head>
@@ -42,7 +42,7 @@
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
                            aria-controls="home" aria-selected="true">Обо мне</a>
                     </li>
-                    <% if (PermissionUtil.haveAccess("checkHistory", permissionList)) {%>
+                    <% if (PermissionService.haveAccess("checkHistory", permissionList)) {%>
                     <li class="nav-item">
                         <a class="nav-link" id="history-tab" data-toggle="tab" href="#history" role="tab"
                            aria-controls="history" aria-selected="false">История</a>

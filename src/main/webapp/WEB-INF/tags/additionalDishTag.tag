@@ -3,7 +3,7 @@
 <c:forEach items="${dishListForOffer}" var="dish">
     <form method="post" action="/profile/user/basket/offer">
         <div class="card mb-4 shadow-sm">
-            <img src="../image/<c:out value="${dish.fileName}"/>">
+            <img src="../../../image/<c:out value="${dish.fileName}"/>">
             <div class="card-body">
                 <p class="card-text">Название:${dish.name} </p>
                 <p class="card-text">Инфа о блюде:${dish.composition} </p>

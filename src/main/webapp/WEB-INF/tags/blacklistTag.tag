@@ -3,7 +3,7 @@
 <c:forEach items="${blacklist}" var="dish">
     <form action="/profile/user/blacklist" method="post">
         <div class="card mb-4 shadow-sm">
-            <img src="../image/<c:out value="${dish.fileName}"/>">
+            <img src="../../image/<c:out value="${dish.fileName}"/>">
             <div class="card-body">
                 <p class="card-text">Название: ${dish.name}</p>
                 <p class="card-text">Инфа о блюде: ${dish.composition}</p>
@@ -15,7 +15,7 @@
                                value="1"
                                pattern="[0-9]*">
 
-                        <input name="id_menu" value="${dish.id}" type="hidden">
+                        <input name="dish_id" value="${dish.id}" type="hidden">
                         <br>
                     </div>
                 </div>

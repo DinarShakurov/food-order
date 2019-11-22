@@ -1,6 +1,6 @@
 package ru.itis.web_project.filters;
 
-import ru.itis.web_project.utils.Authorization;
+import ru.itis.web_project.logic.Authorization;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -25,7 +25,7 @@ public class AuthFilter implements Filter {
             if (cookies != null) {
                 for (Cookie cookie : cookies) {
                     if (cookie.getName().equals("userId")) {
-                        if (Authorization.giveAccess(Integer.parseInt(cookie.getValue()), request, response)) {        //нашёл в бд пользователя с таким id
+                        if (Authorization.giveAccess(Integer.parseInt(cookie.getValue()), request)) {        //нашёл в бд пользователя с таким id
                             response.sendRedirect("/main");
                             return;                                                                             //и перенаправляет на главную
                         }

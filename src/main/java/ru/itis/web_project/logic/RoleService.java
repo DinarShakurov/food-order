@@ -1,10 +1,10 @@
-package ru.itis.web_project.utils;
+package ru.itis.web_project.logic;
 
 import ru.itis.web_project.DAO.RoleDAO;
 
 import java.util.List;
 
-public class RoleUtil {
+public class RoleService {
     public static List<String> getRoleNames() {
         return RoleDAO.getRoleNames();
     }

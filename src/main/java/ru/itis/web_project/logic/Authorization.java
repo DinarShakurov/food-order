@@ -1,9 +1,8 @@
-package ru.itis.web_project.utils;
+package ru.itis.web_project.logic;
 
-import ru.itis.web_project.DAO.AntipathyDAO;
-import ru.itis.web_project.DAO.UserDAO;
+import ru.itis.web_project.logic.additionalLayer.AuthorizationLayer;
 import ru.itis.web_project.models.User;
-import ru.itis.web_project.utils.permissions.PermissionUtil;
+import ru.itis.web_project.logic.permissions.PermissionService;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -12,12 +11,9 @@ import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 public class Authorization {
-    private UserDAO userDAO;
-
 
     public static boolean isItCorrect(HttpServletRequest request, HttpServletResponse response) {
-
-        Optional<User> user = UserDAO.findUserByLoginAndPassword(request.getParameter("login"), HashPassword.getHash(request.getParameter("password")));
+        Optional<User> user = AuthorizationLayer.getUserByLoginAndPassword(request.getParameter("login"), (request.getParameter("password")));
 
         if (user.isEmpty()) {
             return false;
@@ -32,8 +28,8 @@ public class Authorization {
         }
     }
 
-    public static boolean giveAccess(Integer userId, HttpServletRequest request, HttpServletResponse response) {
-        Optional<User> user = UserDAO.findUserById(userId);
+    public static boolean giveAccess(Integer userId, HttpServletRequest request) {
+        Optional<User> user = AuthorizationLayer.getUserById(userId);
         if (user.isEmpty()) {
             return false;
         } else {
@@ -46,8 +42,8 @@ public class Authorization {
         User user1 = user.get();
         HttpSession session = request.getSession(true);
         session.setAttribute("user", user1);
-        session.setAttribute("userAntipathySet", AntipathyDAO.getUsersAntipathy(user1.getId()));
-        session.setAttribute("permissionList", PermissionUtil.setPermissionForUser(user1.getRole()));
+        session.setAttribute("userAntipathySet", AuthorizationLayer.getUserAntipathy(user1.getId()));
+        session.setAttribute("permissionList", PermissionService.setPermissionForUser(user1.getRole()));
         session.setAttribute("totalPriceFromBasket", 0);
     }
 }

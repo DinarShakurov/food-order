@@ -1,7 +1,9 @@
-package ru.itis.web_project.utils;
+package ru.itis.web_project.logic;
 
 import ru.itis.web_project.DAO.UserDAO;
+import ru.itis.web_project.logic.additionalLayer.EditProfileLayer;
 import ru.itis.web_project.models.User;
+import ru.itis.web_project.utils.HashPassword;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,7 +15,7 @@ public class EditProfile {
         currentUser.setAddress(request.getParameter("editAddress"));
         currentUser.setLogin(request.getParameter("editLogin"));
         request.getSession().setAttribute("user", currentUser);
-        UserDAO.updateUser(currentUser);
+        EditProfileLayer.editMainInfo(currentUser);
     }
 
     public static boolean editPassword(HttpServletRequest request) {
@@ -27,7 +29,7 @@ public class EditProfile {
         if (HashPassword.getHash(oldPass).equals(currentUser.getPassword())) {
             currentUser.setPassword(HashPassword.getHash(newPass));
             request.getSession().setAttribute("user", currentUser);
-            UserDAO.updateUser(currentUser);
+            EditProfileLayer.checkIsCorrectOldPasswordAndUpdate(currentUser);
             return true;
         } else {
             return false;

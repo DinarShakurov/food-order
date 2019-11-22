@@ -18,7 +18,10 @@ public class KitchenAccessFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) resp;
         HttpServletRequest request = (HttpServletRequest) req;
         HttpSession session = request.getSession(false);
-        Integer accessId = ((User) session.getAttribute("user")).getRole();
+        User user = (User) session.getAttribute("user");
+        Integer accessId = 0;
+        if (user != null)
+            accessId = user.getRole();
 
         if (accessId == 4 || accessId == 1) {
             chain.doFilter(req, resp);

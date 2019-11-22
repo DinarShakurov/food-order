@@ -1,11 +1,11 @@
-package ru.itis.web_project.utils;
+package ru.itis.web_project.logic;
 
 import ru.itis.web_project.DAO.BookReviewDAO;
 import ru.itis.web_project.models.BookReview;
 
 import java.util.List;
 
-public class ReviewUtil {
+public class ReviewService {
     public static List<BookReview> getReviewList() {
         return BookReviewDAO.getAllBookReview().orElse(null);
     }

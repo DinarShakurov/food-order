@@ -2,13 +2,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ru">
 <head>
-    <%@include file="BootstrapConnection.jsp" %>
+    <%@include file="../BootstrapConnection.jsp" %>
 
     <title>Role rights</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="../header.jsp" %>
 
 <table class="table basket">
     <thead>
@@ -55,6 +55,6 @@
     </tbody>
 </table>
 
-<%@include file="BootstrapScripts.jsp" %>
+<%@include file="../BootstrapScripts.jsp" %>
 </body>
 </html>

@@ -1,3 +1,4 @@
+<%@ page import="ru.itis.web_project.logic.permissions.PermissionService" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib  prefix="tag" tagdir="/WEB-INF/tags" %>
@@ -17,7 +18,7 @@
 </h3>
 
 <%
-    if (permissionList != null && PermissionUtil.haveAccess("makeReview", permissionList)) {
+    if (PermissionService.haveAccess("makeReview", permissionList)) {
 %>
 <table class="table basket">
     <tbody>

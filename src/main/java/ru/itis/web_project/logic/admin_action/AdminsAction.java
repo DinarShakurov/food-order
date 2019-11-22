@@ -1,11 +1,10 @@
-package ru.itis.web_project.utils.admin_action;
+package ru.itis.web_project.logic.admin_action;
 
 import ru.itis.web_project.DAO.RoleDAO;
 import ru.itis.web_project.DAO.UserDAO;
 import ru.itis.web_project.models.User;
 import ru.itis.web_project.utils.HashPassword;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public class AdminsAction {

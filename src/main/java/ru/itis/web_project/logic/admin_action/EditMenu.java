@@ -1,18 +1,16 @@
-package ru.itis.web_project.utils.admin_action;
+package ru.itis.web_project.logic.admin_action;
 
 import ru.itis.web_project.DAO.DishCategoryDAO;
 import ru.itis.web_project.DAO.DishDAO;
 import ru.itis.web_project.DAO.DishPairDAO;
 import ru.itis.web_project.models.Dish;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 import java.io.*;
 import java.util.List;
 
 public class EditMenu {
-    public static void deleteFromMenu(HttpServletRequest request) {
-        Integer id_menu = Integer.parseInt(request.getParameter("id_menu"));
+    public static void deleteFromMenu(Integer id_menu) {
         DishPairDAO.deletePair(id_menu);
         DishDAO.deleteDishFromMenu(id_menu);
     }
@@ -35,7 +33,6 @@ public class EditMenu {
             }
         }
         return tag;
-
     }
 
     private static String uploadFile(Part file) {
@@ -62,14 +59,4 @@ public class EditMenu {
         }
         return "";
     }
-
-    /*private static String getFileName(Part file) {
-        String fileHeader = file.getHeader("content-disposition");
-        for (String content : fileHeader.split(";")) {
-            if (content.trim().startsWith("filename")) {
-                return content.substring(content.indexOf('=') + 2, content.lastIndexOf('"'));
-            }
-        }
-        return "";
-    }*/
 }

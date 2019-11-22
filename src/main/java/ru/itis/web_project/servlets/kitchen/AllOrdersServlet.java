@@ -1,6 +1,6 @@
 package ru.itis.web_project.servlets.kitchen;
 
-import ru.itis.web_project.utils.AllOrders;
+import ru.itis.web_project.logic.AllOrders;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

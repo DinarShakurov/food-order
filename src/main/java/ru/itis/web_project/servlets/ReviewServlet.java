@@ -1,7 +1,7 @@
 package ru.itis.web_project.servlets;
 
 import ru.itis.web_project.models.User;
-import ru.itis.web_project.utils.ReviewUtil;
+import ru.itis.web_project.logic.ReviewService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,17 +17,17 @@ public class ReviewServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String delete_id;
         if ((delete_id = request.getParameter("deleteReview")) != null) {
-            ReviewUtil.deleteReview(delete_id);
+            ReviewService.deleteReview(delete_id);
         } else if (request.getParameter("addReview") != null) {
-            ReviewUtil.addReview(((User)request.getSession(false).getAttribute("user")).getId(), request.getParameter("mark"),request.getParameter("review"));
+            ReviewService.addReview(((User)request.getSession(false).getAttribute("user")).getId(), request.getParameter("mark"),request.getParameter("review"));
         }
         response.sendRedirect("/reviews");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String avg = new DecimalFormat("#0.0").format(ReviewUtil.getAvgRate());
+        String avg = new DecimalFormat("#0.0").format(ReviewService.getAvgRate());
         request.setAttribute("reviewRating", avg);
-        request.setAttribute("reviewList", ReviewUtil.getReviewList());
+        request.setAttribute("reviewList", ReviewService.getReviewList());
         request.getRequestDispatcher("/jsp/reviews.jsp").forward(request, response);
     }
 

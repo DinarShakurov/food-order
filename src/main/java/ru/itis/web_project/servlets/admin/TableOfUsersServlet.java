@@ -1,7 +1,7 @@
 package ru.itis.web_project.servlets.admin;
 
 import ru.itis.web_project.models.User;
-import ru.itis.web_project.utils.admin_action.AdminsAction;
+import ru.itis.web_project.logic.admin_action.AdminsAction;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

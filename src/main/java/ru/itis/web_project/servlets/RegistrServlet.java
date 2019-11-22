@@ -1,6 +1,6 @@
 package ru.itis.web_project.servlets;
 
-import ru.itis.web_project.utils.Registration;
+import ru.itis.web_project.logic.Registration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

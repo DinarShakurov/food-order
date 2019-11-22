@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="ru.itis.web_project.utils.permissions.PermissionUtil" %>
+<%@ page import="ru.itis.web_project.logic.permissions.PermissionService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <header>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
@@ -50,20 +50,20 @@
                         <a class="dropdown-item" href="/profile">Профиль</a> <%--ALL--%>
 
 
-                        <%if (PermissionUtil.haveAccess("checkBasket", permissionList)) {%>
+                        <%if (PermissionService.haveAccess("checkBasket", permissionList)) {%>
                         <a class="dropdown-item" href="/profile/user/basket">Корзина</a> <%--USER--%>
                         <a class="dropdown-item" href="/profile/user/blacklist">Черный список</a>
                         <%}%>
 
-                        <%if (PermissionUtil.haveAccess("addDishToMenu", permissionList)) {%>
+                        <%if (PermissionService.haveAccess("addDishToMenu", permissionList)) {%>
                         <a class="dropdown-item" href="/menu/add-dish">Администрирование меню</a> <%--ADMIN--%>
                         <%}%>
 
-                        <%if (PermissionUtil.haveAccess("showUsers", permissionList)) {%>
+                        <%if (PermissionService.haveAccess("showUsers", permissionList)) {%>
                         <a class="dropdown-item" href="/profile/admin/all-users">Клиенты/работники</a> <%--ADMIN--%>
                         <%}%>
 
-                        <%if (PermissionUtil.haveAccess("showOrders", permissionList)) {%>
+                        <%if (PermissionService.haveAccess("showOrders", permissionList)) {%>
                         <a class="dropdown-item" href="/profile/all-orders">Посмотреть заказы</a> <%--ADMIN, KITCHEN--%>
                         <%}%>
 

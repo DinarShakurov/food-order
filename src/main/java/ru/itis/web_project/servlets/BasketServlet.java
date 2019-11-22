@@ -1,6 +1,8 @@
 package ru.itis.web_project.servlets;
 
-import ru.itis.web_project.utils.user_action.DishesUtil;
+import ru.itis.web_project.logic.additionalLayer.DishesServiceLayer;
+import ru.itis.web_project.logic.user_action.DishesService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,9 +15,11 @@ import java.io.IOException;
 public class BasketServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getParameter("delete") != null) {
-            DishesUtil.deleteDishFromBasket(request);
+            /*DishesService.deleteDishFromBasket(request);*/
+            DishesServiceLayer.deleteDishFromBasket(request);
         } else if (request.getParameter("buy") != null) {
-            DishesUtil.buyFromBasket(request);
+            /*DishesService.buyFromBasket(request);*/
+            DishesServiceLayer.buyFromBasket(request);
             request.setAttribute("buyStatus", "Заказ был добавлен");
         }
         request.getRequestDispatcher("/jsp/basket.jsp").forward(request, response);
