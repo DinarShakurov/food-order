@@ -1,4 +1,3 @@
-<%@ page import="ru.itis.web_project.logic.RoleService" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
@@ -6,6 +5,8 @@
 <head>
 
     <%@ include file="BootstrapConnection.jsp" %>
+        <script type="text/javascript" src="/js/Registration.js"></script>
+    <%--<script type="text/javascript" src="js/Registration.js"></script>--%>
 
     <title>Registration Worker</title>
     <link rel="stylesheet" href="/css/style.css" type="text/css">
@@ -38,10 +39,10 @@
                autofocus="">
         <br>
 
-        <label for="inputNumber" class="sr-only">Номер</label>
-        <input name="phoneNumber" type="number" id="inputNumber" class="form-control" placeholder="номер телефона"
-               required=""
-               autofocus="">
+        <label for="number" class="sr-only">Номер</label>
+        <input name="phoneNumber" type="number" id="number" class="form-control" placeholder="номер телефона"
+               required="" autofocus="" onkeyup="checkPhone(); return false;">
+        <div id="error-number"></div>
         <br>
 
         <label for="inputAddress" class="sr-only">Адрес</label>
@@ -54,9 +55,15 @@
                autofocus="">
         <br>
 
-        <label for="inputPassword" class="sr-only">Пароль</label>
-        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="пароль"
-               required="a">
+        <label for="password1" class="sr-only">Пароль</label>
+        <input name="password" type="password" id="password1" class="form-control" placeholder="пароль"
+               required="" onkeyup="checkPass(); return false;">
+        <br>
+
+        <label for="password2" class="sr-only">Пароль</label>
+        <input name="password" type="password" id="password2" class="form-control" placeholder="повторите пароль"
+               required="" onkeyup="checkPass(); return false;">
+        <div id="error-nwl"></div>
         <br>
 
 

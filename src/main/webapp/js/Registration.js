@@ -33,3 +33,19 @@ function checkPass()
         message.innerHTML = "Пароли не совпадают"
     }
 }
+
+function checkPhone() {
+    var number = document.getElementById("number");
+    var badColor = "#ff6666";
+    var message = document.getElementById('error-number');
+    if (number.value.length > 12)
+    {
+        message.style.color = badColor;
+        message.innerText = "Номер телефона должен содержать менее 12 цифр";
+    }
+    else
+    {
+        message.innerText = "";
+    }
+
+}

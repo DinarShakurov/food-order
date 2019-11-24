@@ -26,10 +26,10 @@
                autofocus="">
         <br>
 
-        <label for="inputNumber" class="sr-only">Номер</label>
-        <input name="phoneNumber" type="number" id="inputNumber" class="form-control" placeholder="номер телефона"
-               required=""
-               autofocus="">
+        <label for="number" class="sr-only">Номер</label>
+        <input name="phoneNumber" type="number" id="number" class="form-control" placeholder="номер телефона"
+               required="" autofocus="" onkeyup="checkPhone(); return false;">
+            <div id="error-number"></div>
         <br>
 
         <label for="inputAddress" class="sr-only">Адрес</label>
